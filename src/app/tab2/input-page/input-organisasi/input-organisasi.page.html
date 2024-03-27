@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Input Organisasi</ion-title>
+
+    <ion-buttons slot="end">
+      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form>
+    <ion-list>
+      <p class="form-label">Macam Kegiatan</p>
+      <div class="form-input"><ion-input type="text" id="macam_kegiatan"></ion-input></div>
+      
+      <p class="form-label">Jabatan</p>
+      <div class="form-input"><ion-input type="text" id="jabatan" maxlength="25"></ion-input></div>
+
+      <p class="form-label">Tahun</p>
+      <div class="form-input"><ion-input type="text" id="tahun" maxlength="9"></ion-input></div>
+    </ion-list>
+
+    <ion-fab horizontal="center">
+      <ion-button id="btn_kirim">Kirim</ion-button>
+    </ion-fab><br><br><br>
+    
+  </form>
+</ion-content>

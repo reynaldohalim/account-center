@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Data Pekerjaan</ion-title>
+
+    <ion-buttons slot="end">
+      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list>
+      <p class="form-label">Divisi</p>
+      <div class="form-input"><ion-input type="text" id="divisi" disabled></ion-input></div>
+
+      <p class="form-label">Bagian</p>
+      <div class="form-input"><ion-input type="text" id="bagian" maxlength="25"></ion-input></div>
+
+      <p class="form-label">Detail Posisi</p>
+      <div class="form-input"><ion-input type="text" id="detail_posisi" maxlength="25"></ion-input></div>
+
+      <p class="form-label">Jabatan</p>
+      <div class="form-input"><ion-input type="text" id="jabatan"></ion-input></div>
+            
+      <p class="form-label">Group</p>
+      <div class="form-input"><ion-input type="text" id="group"></ion-input></div>
+      
+      <p class="form-label">Kode Admin</p>
+      <div class="form-input"><ion-input type="tel" value="" id="kode_admin"></ion-input></div>
+      
+      <p class="form-label">Kode Kontrak</p>
+      <div class="form-input"><ion-input id="kode_kontrak"></ion-input></div>
+
+      <p class="form-label">Kode Periode</p>
+      <div class="form-input"><ion-input id="kode_kontrak"></ion-input></div>
+
+      <p class="form-label">Sales Office / District</p>
+      <div class="form-input"><ion-input id="sales_office_district"></ion-input></div>
+      
+      <p class="form-label">Tanggal Masuk</p>
+      <div class="form-input"><ion-input type="date" id="tanggal_masuk"></ion-input></div>
+      
+      <p class="form-label">Tanggal Penetapan</p>
+      <div class="form-input"><ion-input type="date" id="tanggal_penetapan"></ion-input></div>
+
+      <p class="form-label">Status Karyawan</p>
+      <ion-select class="form-input" id="status_karyawan" label="">
+        <ion-select-option value="aktif">Aktif</ion-select-option>
+        <ion-select-option value="tidak aktif">Tidak aktif</ion-select-option>
+      </ion-select>
+
+      <p class="form-label">Tanggal Keluar</p>
+      <div class="form-input"><ion-input type="date" id="tanggal_keluar"></ion-input></div>
+      
+      <p class="form-label">Alasan Keluar</p>
+      <div class="form-input"><ion-input id="alasan_keluar"></ion-input></div>
+
+      <p class="form-label">Gaji Per Bulan</p>
+      <div class="form-input"><ion-input id="gaji_per_bulan" type="number"></ion-input></div>
+
+      <p class="form-label">Pengalaman</p>
+      <div class="form-input"><ion-input id="pengalaman"></ion-input></div>
+      <br>
+
+    </ion-list>
+  </form>
+</ion-content>

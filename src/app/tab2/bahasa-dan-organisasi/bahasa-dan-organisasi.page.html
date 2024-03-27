@@ -1,0 +1,26 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Bahasa & Organisasi</ion-title>
+
+    <ion-buttons slot="end">
+      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-item routerLink="../bahasa">
+      <img src="../../assets/icon/bahasa.svg">
+      <ion-label>Bahasa</ion-label>
+    </ion-item><br>
+
+    <ion-item routerLink="../organisasi">
+      <img src="../../assets/icon/organisasi.svg">
+      <ion-label>Organisasi</ion-label>
+    </ion-item>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Absensi  </ion-title>
+
+    <ion-buttons slot="end">
+      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <ion-list>
+      <ion-select class="form-input" id="durasi" label="" label-placement="floating">
+        <ion-select-option value="satu-periode">Satu periode</ion-select-option>
+        <ion-select-option value="custom">Pilih bulan</ion-select-option>
+      </ion-select>
+
+      <br>
+      <div style="display: flex;">
+        <ion-select class="form-input" id="durasi" label="" label-placement="floating" style="flex: 1;">
+          <ion-select-option value="satu-periode">Satu periode</ion-select-option>
+          <ion-select-option value="custom">Pilih bulan</ion-select-option>
+        </ion-select>
+        <p style="flex: 0.1;"> </p>
+        <ion-select class="form-input" id="durasi" label="" label-placement="floating" style="flex: 1;">
+          <ion-select-option value="satu-periode">Satu periode</ion-select-option>
+          <ion-select-option value="custom">Pilih bulan</ion-select-option>
+        </ion-select>
+      </div>
+
+      <!-- <ion-button id="btn_show" (click)="gChart()">Edit</ion-button> -->
+
+      <div id="chart_div" style="background-color: #F6F1EB;"></div>
+  </ion-list>
+
+</ion-content>

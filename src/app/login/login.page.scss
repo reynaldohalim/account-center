@@ -1,0 +1,71 @@
+ion-content{
+    --background: url('../../assets/image/welcome.png') no-repeat center center / cover;
+}
+
+.heading{
+    h1, h4{
+        font-weight: bold;
+        margin-bottom: -5%;
+    }    
+}
+
+.login-form{
+    background: url('../../assets/image/welcome-card.png') no-repeat center bottom / cover;
+    
+    .form-input ion-item{
+            --background:white;
+            padding-bottom: 1vh;
+    }
+
+    .action-buttons{
+        .login-button{
+            --background: #8F1F24;
+            width: 100%;
+            text-transform: none;
+            margin-top: 3vh;
+            margin-bottom: 2vh;
+        }
+
+        #forgot_password{
+            float: right;
+            margin: 5%;
+            text-decoration: none;
+            color: #8F1F24;
+            
+        }
+
+        p{
+            text-align: center;
+            a{
+                text-decoration: none;
+                color: #8F1F24;
+            }
+        }
+    }
+}
+
+ion-input{
+    --highlight-color-focused: #8F1F24;
+}
+
+#login_heading{
+    height: 20vh;
+    margin-top: 10vh;
+}
+
+#register_heading{
+    height: 15vh;
+    margin-top: 8vh;
+}
+
+#login_form{
+    height: 70vh;
+}
+
+#register_form{
+    height: 80vh;
+}
+
+#hide_icon{
+    color: #888888;
+}

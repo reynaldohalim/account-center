@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Input Pendidikan</ion-title>
+
+    <ion-buttons slot="end">
+      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form>
+    <ion-list>
+
+      <p class="form-label">Tingkat</p>
+      <ion-select class="form-input" id="tingkat" label="">
+        <ion-select-option value="sd">SD</ion-select-option>
+        <ion-select-option value="smp">SMP</ion-select-option>
+        <ion-select-option value="sma">SMA</ion-select-option>
+        <ion-select-option value="d3">D3</ion-select-option>
+        <ion-select-option value="s1">S1</ion-select-option>
+        <ion-select-option value="s2">S2</ion-select-option>
+        <ion-select-option value="s3">S3</ion-select-option>
+      </ion-select>
+      
+      <p class="form-label">Sekolah</p>
+      <div class="form-input"><ion-input type="text" id="sekolah"></ion-input></div>
+
+      <p class="form-label">Kota</p>
+      <div class="form-input"><ion-input type="text" id="kota"></ion-input></div>
+
+      <p class="form-label">Jurusan</p>
+      <div class="form-input"><ion-input type="text" id="jurusan"></ion-input></div>
+
+      <p class="form-label">Tahun Masuk</p>
+      <div class="form-input"><ion-input type="number" id="tahun_masuk"></ion-input></div>
+
+      <p class="form-label">Tahun Lulus</p>
+      <div class="form-input"><ion-input type="number" id="tahun_lulus"></ion-input></div>
+
+      <p class="form-label">IPK</p>
+      <div class="form-input"><ion-input type="number" id="ipk"></ion-input></div>
+
+      <p class="form-label">Lulus</p>
+      <ion-checkbox class="cb-input" id="lulus" checked="false"></ion-checkbox>
+
+    </ion-list>
+    <ion-fab horizontal="center">
+      <ion-button id="btn_kirim">Kirim</ion-button>
+    </ion-fab><br><br><br>
+  </form>
+</ion-content>

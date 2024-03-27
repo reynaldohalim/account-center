@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Input Pengalaman Kerja</ion-title>
+
+    <ion-buttons slot="end">
+      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form>
+    <ion-list>
+      <p class="form-label">Nama Perusahaan</p>
+      <div class="form-input"><ion-input type="text" id="nama_perusahaan" maxlength="25"></ion-input></div>
+
+      <p class="form-label">Alamat</p>
+      <div class="form-input"><ion-input type="text" id="alamat"></ion-input></div>
+
+      <p class="form-label">Tahun Awal</p>
+      <div class="form-input"><ion-input type="number" id="tahun_awal"></ion-input></div>
+
+      <p class="form-label">Tahun Akhir</p>
+      <div class="form-input"><ion-input type="number" id="tahun_akhir"></ion-input></div>
+
+      <p class="form-label">Alasan Pindah</p>
+      <div class="form-input"><ion-input id="alasan_pindah"></ion-input></div>
+
+      <p class="form-label">Total Karyawan</p>
+      <div class="form-input"><ion-input type="number" id="total_karyawan"></ion-input></div>
+
+      <p class="form-label">Total Bawahan</p>
+      <div class="form-input"><ion-input type="number" id="total_bawahan"></ion-input></div>
+
+      <p class="form-label">Uraian Pekerjaan</p>
+      <div class="form-input"><ion-input id="uraian_pekerjaan"></ion-input></div>
+
+      <p class="form-label">Nama Atasan</p>
+      <div class="form-input"><ion-input id="nama_atasan"></ion-input></div>
+
+      <p class="form-label">No. Telepon</p>
+      <div class="form-input"><ion-input type="tel" value="" id="no_telepon"></ion-input></div>
+
+      <p class="form-label">Gaji</p>
+      <div class="form-input"><ion-input type="number" id="gaji"></ion-input></div>
+
+      <p class="form-label">Jabatan Awal</p>
+      <div class="form-input"><ion-input id="jabatan_awal"></ion-input></div>
+
+      <p class="form-label">Jabatan Akhir</p>
+      <div class="form-input"><ion-input id="jabatan_akhir"></ion-input></div>
+      
+    </ion-list>
+    <ion-fab horizontal="center">
+      <ion-button id="btn_kirim">Kirim</ion-button>
+    </ion-fab><br><br><br>
+  </form>
+</ion-content>

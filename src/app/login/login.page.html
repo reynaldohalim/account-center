@@ -1,0 +1,29 @@
+<ion-content>
+  <div class="heading ion-padding" id="login_heading">
+    <h1>Halo,</h1>
+    <h4>Masuk untuk melanjutkan</h4>
+  </div>
+
+  <div class="login-form ion-padding" id="login_form">
+    <br><br><br><div class="form-input">
+      <ion-item>
+        <ion-icon name="call-outline"></ion-icon>
+        <ion-input label="" type="number" placeholder="No. HP"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-input label="" type="password" placeholder="Password"></ion-input>
+        <ion-button fill="clear" slot="end" aria-label="Show/hide">
+        <ion-icon slot="icon-only" name="eye-outline" aria-hidden="true" id="hide_icon"></ion-icon>
+      </ion-button>
+      </ion-item>
+    </div>
+
+    <div class="action-buttons">
+      <br><a href="../forgot-password/" id="forgot_password">Lupa password</a>
+      <ion-button shape="round" size="large" class="login-button">Masuk</ion-button>
+      <p>Belum punya akun? <a href="../register/">Daftar</a></p>
+    </div>
+  </div>
+</ion-content>

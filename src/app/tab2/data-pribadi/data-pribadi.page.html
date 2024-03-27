@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Data Pribadi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div id="profile_photo_div">
+    <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile_photo">
+  </div>
+
+  <form>
+    <ion-list>
+      <p class="form-label">NIP</p>
+      <div class="form-input"><ion-input type="text" id="nip" disabled></ion-input></div>
+
+      <p class="form-label">Nama</p>
+      <div class="form-input"><ion-input type="text" id="nama" maxlength="25"></ion-input></div>
+
+      <p class="form-label">Jenis Kelamin</p>
+      <ion-select class="form-input" id="jenis_kelamin" label="">
+        <ion-select-option value="laki-laki">Laki-laki</ion-select-option>
+        <ion-select-option value="perempuan">Perempuan</ion-select-option>
+      </ion-select>
+
+      <p class="form-label">Alamat KTP</p>
+      <div class="form-input"><ion-input type="text" id="alamat_ktp"></ion-input></div>
+            
+      <p class="form-label">Alamat Domisili</p>
+      <div class="form-input"><ion-input type="text" id="alamat_domisili"></ion-input></div>
+      
+      <p class="form-label">No. Handphone</p>
+      <div class="form-input"><ion-input type="tel" value="" id="no_hp"></ion-input></div>
+      
+      <p class="form-label">Tempat Lahir</p>
+      <div class="form-input"><ion-input id="tempat_lahir"></ion-input></div>
+      
+      <p class="form-label">Tanggal Lahir</p>
+      <div class="form-input"><ion-input type="date" id="tanggal_lahir"></ion-input></div>
+
+      <p class="form-label">Agama</p>
+      <ion-select class="form-input" id="agama" label="">
+        <ion-select-option value="islam">Islam</ion-select-option>
+        <ion-select-option value="kristen">Kristen</ion-select-option>
+        <ion-select-option value="katolik">Katolik</ion-select-option>
+        <ion-select-option value="hindu">Hindu</ion-select-option>
+        <ion-select-option value="budha">Budha</ion-select-option>
+        <ion-select-option value="konghucu">Konghucu</ion-select-option>
+      </ion-select>
+      
+      <p class="form-label">Status Nikah</p>
+      <ion-select class="form-input" id="status_nikah" label="">
+        <ion-select-option value="belum_nikah">Belum Nikah</ion-select-option>
+        <ion-select-option value="menikah">Menikah</ion-select-option>
+      </ion-select>
+      
+      <p class="form-label">Jumlah Anak</p>
+      <div class="form-input"><ion-input type="number" id="jumlah_anak" min="0"></ion-input></div>
+      
+      <p class="form-label">Pendidikan Terakhir</p>
+      <ion-select class="form-input" id="pendidikan_terakhir" label="">
+        <ion-select-option value="sma">SMA</ion-select-option>
+        <ion-select-option value="d3">D3</ion-select-option>
+        <ion-select-option value="s1">S1</ion-select-option>
+      </ion-select>
+
+      <br>
+      <ion-fab horizontal="center">
+        <ion-button id="btn_kirim">Edit</ion-button>
+      </ion-fab><br><br><br>
+    </ion-list>
+  </form>
+</ion-content>

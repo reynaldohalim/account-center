@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Input Bahasa</ion-title>
+
+    <ion-buttons slot="end">
+      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form>
+    <ion-list>
+      <p class="form-label">Bahasa</p>
+      <div class="form-input"><ion-input type="text" id="bahasa" maxlength="25"></ion-input></div>
+
+      <p class="form-label">Mendengar</p>
+      <ion-select class="form-input" id="mendengar" label="">
+        <ion-select-option value="cukup">Cukup</ion-select-option>
+        <ion-select-option value="baik">Baik</ion-select-option>
+        <ion-select-option value="baik-sekali">Baik sekali</ion-select-option>
+      </ion-select>
+
+      <p class="form-label">Membaca</p>
+      <ion-select class="form-input" id="membaca" label="">
+        <ion-select-option value="cukup">Cukup</ion-select-option>
+        <ion-select-option value="baik">Baik</ion-select-option>
+        <ion-select-option value="baik-sekali">Baik sekali</ion-select-option>
+      </ion-select>
+
+      <p class="form-label">Menulis</p>
+      <ion-select class="form-input" id="menulis" label="">
+        <ion-select-option value="cukup">Cukup</ion-select-option>
+        <ion-select-option value="baik">Baik</ion-select-option>
+        <ion-select-option value="baik-sekali">Baik sekali</ion-select-option>
+      </ion-select>
+
+      <p class="form-label">Berbicara</p>
+      <ion-select class="form-input" id="berbicara" label="">
+        <ion-select-option value="cukup">Cukup</ion-select-option>
+        <ion-select-option value="baik">Baik</ion-select-option>
+        <ion-select-option value="baik-sekali">Baik sekali</ion-select-option>
+      </ion-select>
+
+    </ion-list>
+
+    <ion-fab horizontal="center">
+      <ion-button id="btn_kirim">Kirim</ion-button>
+    </ion-fab><br><br><br>
+    
+  </form>
+</ion-content>

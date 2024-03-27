@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Input Keluarga</ion-title>
+
+    <ion-buttons slot="end">
+      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form>
+    <ion-list>
+      <p class="form-label">Nama</p>
+      <div class="form-input"><ion-input type="text" id="nama" maxlength="25"></ion-input></div>
+
+      <p class="form-label">Hubungan</p>
+      <div class="form-input"><ion-input type="text" id="hubungan_keluarga"></ion-input></div>
+
+      <p class="form-label">Jenis Kelamin</p>
+      <ion-select class="form-input" id="jenis_kelamin_keluarga" label="">
+        <ion-select-option value="laki-laki">Laki-laki</ion-select-option>
+        <ion-select-option value="perempuan">Perempuan</ion-select-option>
+      </ion-select>
+
+      <p class="form-label">Tempat Lahir</p>
+      <div class="form-input"><ion-input id="tempat_lahir_keluarga"></ion-input></div>
+      
+      <p class="form-label">Tanggal Lahir</p>
+      <div class="form-input"><ion-input type="date" id="tanggal_lahir_keluarga"></ion-input></div>
+
+      <p class="form-label">Pendidikan</p>
+      <ion-select class="form-input" id="pendidikan_keluarga" label="">
+        <ion-select-option value="sd">SD</ion-select-option>
+        <ion-select-option value="smp">SMP</ion-select-option>
+        <ion-select-option value="sma">SMA</ion-select-option>
+        <ion-select-option value="d3">D3</ion-select-option>
+        <ion-select-option value="s1">S1</ion-select-option>
+        <ion-select-option value="s2">S2</ion-select-option>
+        <ion-select-option value="s3">S3</ion-select-option>
+      </ion-select>
+
+      <p class="form-label">Keterangan</p>
+      <div class="form-input"><ion-input type="text" id="keterangan"></ion-input></div>
+    </ion-list>
+    <ion-fab horizontal="center">
+      <ion-button id="btn_kirim">Kirim</ion-button>
+    </ion-fab><br><br><br>
+  </form>
+</ion-content>

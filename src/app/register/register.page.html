@@ -1,0 +1,49 @@
+<ion-content>
+  <div class="heading ion-padding" id="register_heading">
+    <h1>Daftar</h1>
+  </div>
+
+  <div class="login-form ion-padding" id="register_form">
+    <br><br><br>
+    <div class="form-input">
+
+      <ion-item>
+        <ion-icon name="id-card-outline"></ion-icon>
+        <ion-input label="" type="number" placeholder="NIK"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-icon name="call-outline"></ion-icon>
+        <ion-input label="" type="number" placeholder="No. HP"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="mail-outline"></ion-icon>
+        <ion-input label="" type="email" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-input label="" type="password" placeholder="Password"></ion-input>
+        <ion-button fill="clear" slot="end" aria-label="Show/hide">
+        <ion-icon slot="icon-only" name="eye-outline" aria-hidden="true" id="hide_icon"></ion-icon>
+      </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-input label="" type="password" placeholder="Verifikasi password"></ion-input>
+        <ion-button fill="clear" slot="end" aria-label="Show/hide">
+        <ion-icon slot="icon-only" name="eye-outline" aria-hidden="true" id="hide_icon"></ion-icon>
+      </ion-button>
+      </ion-item>
+
+    </div>
+
+    <div class="action-buttons">
+      <ion-button shape="round" size="large" class="login-button">Daftar</ion-button>
+      <p>Sudah punya akun? <a href="../login/">Masuk</a></p>
+    </div>
+  </div>
+</ion-content>

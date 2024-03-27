@@ -5,7 +5,37 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'data-pribadi',
+    loadChildren: () => import('./tab2/data-pribadi/data-pribadi.module').then( m => m.DataPribadiPageModule)
+  },
+  {
+    path: 'data-pekerjaan',
+    loadChildren: () => import('./tab2/data-pekerjaan/data-pekerjaan.module').then( m => m.DataPekerjaanPageModule)
+  },
+  {
+    path: 'data-lainlain',
+    loadChildren: () => import('./tab2/data-lainlain/data-lainlain.module').then( m => m.DataLainlainPageModule)
+  },
+  {
+    path: 'data-keluarga',
+    loadChildren: () => import('./tab2/data-keluarga/data-keluarga.module').then( m => m.DataKeluargaPageModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   }
+
+
+
 ];
 @NgModule({
   imports: [
