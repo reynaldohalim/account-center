@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bahasa-dan-organisasi',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bahasa-dan-organisasi.page.scss'],
 })
 export class BahasaDanOrganisasiPage implements OnInit {
+  nip = 0;
 
-  constructor() { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params && params['nip']) {
+        this.nip = params['nip'];
+      }
+      else{
+        this.router.navigate(['/login']);
+      }
+    });
+  }
 
   ngOnInit() {
   }
 
+  navigateToData(page: string){
+    const data ={
+      nip: `${this.nip}`,
+    };
+
+    this.router.navigate(['tabs/tab2/'+page], {queryParams: data});
+  }
 }

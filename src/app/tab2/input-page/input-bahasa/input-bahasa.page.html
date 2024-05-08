@@ -5,7 +5,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Input Bahasa</ion-title>
+    <ion-title>{{ title }}</ion-title>
 
     <ion-buttons slot="end">
       <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
@@ -17,41 +17,45 @@
   <form>
     <ion-list>
       <p class="form-label">Bahasa</p>
-      <div class="form-input"><ion-input type="text" id="bahasa" maxlength="25"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="bahasa" readonly="{{ updatable }}" maxlength="25" [(ngModel)]="bahasa.bahasa"></ion-input></div>
 
       <p class="form-label">Mendengar</p>
-      <ion-select class="form-input" id="mendengar" label="">
-        <ion-select-option value="cukup">Cukup</ion-select-option>
-        <ion-select-option value="baik">Baik</ion-select-option>
-        <ion-select-option value="baik-sekali">Baik sekali</ion-select-option>
+      <ion-select class="form-input dropdown-{{ updatable }}" name="mendengar" label="" [(ngModel)]="bahasa.mendengar">
+        <ion-select-option value="1">Cukup</ion-select-option>
+        <ion-select-option value="2">Baik</ion-select-option>
+        <ion-select-option value="3">Baik sekali</ion-select-option>
       </ion-select>
 
       <p class="form-label">Membaca</p>
-      <ion-select class="form-input" id="membaca" label="">
-        <ion-select-option value="cukup">Cukup</ion-select-option>
-        <ion-select-option value="baik">Baik</ion-select-option>
-        <ion-select-option value="baik-sekali">Baik sekali</ion-select-option>
+      <ion-select class="form-input dropdown-{{ updatable }}" name="membaca" label=""  [(ngModel)]="bahasa.membaca">
+        <ion-select-option value="1">Cukup</ion-select-option>
+        <ion-select-option value="2">Baik</ion-select-option>
+        <ion-select-option value="3">Baik sekali</ion-select-option>
       </ion-select>
 
       <p class="form-label">Menulis</p>
-      <ion-select class="form-input" id="menulis" label="">
-        <ion-select-option value="cukup">Cukup</ion-select-option>
-        <ion-select-option value="baik">Baik</ion-select-option>
-        <ion-select-option value="baik-sekali">Baik sekali</ion-select-option>
+      <ion-select class="form-input dropdown-{{ updatable }}" name="menulis" label="" [(ngModel)]="bahasa.menulis">
+        <ion-select-option value="1">Cukup</ion-select-option>
+        <ion-select-option value="2">Baik</ion-select-option>
+        <ion-select-option value="3">Baik sekali</ion-select-option>
       </ion-select>
 
       <p class="form-label">Berbicara</p>
-      <ion-select class="form-input" id="berbicara" label="">
-        <ion-select-option value="cukup">Cukup</ion-select-option>
-        <ion-select-option value="baik">Baik</ion-select-option>
-        <ion-select-option value="baik-sekali">Baik sekali</ion-select-option>
+      <ion-select class="form-input dropdown-{{ updatable }}" name="berbicara" label=""  [(ngModel)]="bahasa.bicara">
+        <ion-select-option value="1">Cukup</ion-select-option>
+        <ion-select-option value="2">Baik</ion-select-option>
+        <ion-select-option value="3">Baik sekali</ion-select-option>
       </ion-select>
-
     </ion-list>
 
     <ion-fab horizontal="center">
-      <ion-button id="btn_kirim">Kirim</ion-button>
-    </ion-fab><br><br><br>
-    
+      <ion-fab-button *ngIf="updatable" id="updateMode">
+        <ion-icon name="create"></ion-icon>
+      </ion-fab-button>
+      <ion-alert trigger="updateMode" *ngIf="updatable" class="custom-alert" header="Perbarui data?" [buttons]="update_mode_alert"></ion-alert>
+
+      <ion-button id="btn_kirim" *ngIf="!updatable">{{ btn_kirim }}</ion-button>
+      <ion-alert trigger="btn_kirim" *ngIf="!updatable" class="custom-alert" header="Kirim perbaruan data?" [buttons]="send_update_alert"></ion-alert>
+    </ion-fab>
   </form>
 </ion-content>

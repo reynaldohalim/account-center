@@ -18,55 +18,55 @@
   <form>
     <ion-list>
       <p class="form-label">Divisi</p>
-      <div class="form-input"><ion-input type="text" id="divisi" disabled></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="divisi" readonly [(ngModel)]="data_pekerjaan.divisi"></ion-input></div>
 
       <p class="form-label">Bagian</p>
-      <div class="form-input"><ion-input type="text" id="bagian" maxlength="25"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="bagian" readonly [(ngModel)]="data_pekerjaan.bagian"></ion-input></div>
 
       <p class="form-label">Detail Posisi</p>
-      <div class="form-input"><ion-input type="text" id="detail_posisi" maxlength="25"></ion-input></div>
+      <div class="form-input"><ion-textarea rows="2" type="text" name="detail_posisi" readonly [(ngModel)]="data_pekerjaan.detail_posisi"></ion-textarea></div>
 
       <p class="form-label">Jabatan</p>
-      <div class="form-input"><ion-input type="text" id="jabatan"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="jabatan" readonly [(ngModel)]="data_pekerjaan.jabatan"></ion-input></div>
             
       <p class="form-label">Group</p>
-      <div class="form-input"><ion-input type="text" id="group"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="group" readonly [(ngModel)]="data_pekerjaan.group"></ion-input></div>
       
       <p class="form-label">Kode Admin</p>
-      <div class="form-input"><ion-input type="tel" value="" id="kode_admin"></ion-input></div>
+      <div class="form-input"><ion-input type="tel" value="" name="kode_admin" readonly [(ngModel)]="data_pekerjaan.kode_admin"></ion-input></div>
       
       <p class="form-label">Kode Kontrak</p>
-      <div class="form-input"><ion-input id="kode_kontrak"></ion-input></div>
+      <div class="form-input"><ion-input name="kode_kontrak" readonly [(ngModel)]="data_pekerjaan.kode_kontrak"></ion-input></div>
 
       <p class="form-label">Kode Periode</p>
-      <div class="form-input"><ion-input id="kode_kontrak"></ion-input></div>
+      <div class="form-input"><ion-input name="kode_periode" readonly [(ngModel)]="data_pekerjaan.kode_periode"></ion-input></div>
 
       <p class="form-label">Sales Office / District</p>
-      <div class="form-input"><ion-input id="sales_office_district"></ion-input></div>
+      <div class="form-input"><ion-input name="sales_office" readonly [(ngModel)]="data_pekerjaan.sales_office"></ion-input></div>
       
       <p class="form-label">Tanggal Masuk</p>
-      <div class="form-input"><ion-input type="date" id="tanggal_masuk"></ion-input></div>
+      <div class="form-input"><ion-input type="date" name="tgl_masuk" readonly [(ngModel)]="data_pekerjaan.tgl_masuk"></ion-input></div>
       
       <p class="form-label">Tanggal Penetapan</p>
-      <div class="form-input"><ion-input type="date" id="tanggal_penetapan"></ion-input></div>
+      <div class="form-input"><ion-input type="date" name="tgl_penetapan" readonly [(ngModel)]="data_pekerjaan.tgl_penetapan"></ion-input></div>
 
       <p class="form-label">Status Karyawan</p>
-      <ion-select class="form-input" id="status_karyawan" label="">
-        <ion-select-option value="aktif">Aktif</ion-select-option>
-        <ion-select-option value="tidak aktif">Tidak aktif</ion-select-option>
+      <ion-select class="form-input dropdown-true" name="status_karyawan" label="" [(ngModel)]="data_pekerjaan.status_karyawan">
+        <ion-select-option value="1">Aktif</ion-select-option>
+        <ion-select-option value="0">Tidak aktif</ion-select-option>
       </ion-select>
 
-      <p class="form-label">Tanggal Keluar</p>
-      <div class="form-input"><ion-input type="date" id="tanggal_keluar"></ion-input></div>
+      <p class="form-label" *ngIf="!karyawan_aktif">Tanggal Keluar</p>
+      <div class="form-input"><ion-input type="date" name="tanggal_keluar" readonly *ngIf="!karyawan_aktif" [(ngModel)]="data_pekerjaan.tgl_keluar"></ion-input></div>
       
-      <p class="form-label">Alasan Keluar</p>
-      <div class="form-input"><ion-input id="alasan_keluar"></ion-input></div>
+      <p class="form-label" *ngIf="!karyawan_aktif">Alasan Keluar</p>
+      <div class="form-input"><ion-input name="alasan_keluar" readonly *ngIf="!karyawan_aktif" [(ngModel)]="data_pekerjaan.alasan_keluar"></ion-input></div>
 
       <p class="form-label">Gaji Per Bulan</p>
-      <div class="form-input"><ion-input id="gaji_per_bulan" type="number"></ion-input></div>
+      <div class="form-input"><ion-input name="gaji_per_bulan" type="number" readonly [(ngModel)]="data_pekerjaan.gaji_perbulan"></ion-input></div>
 
       <p class="form-label">Pengalaman</p>
-      <div class="form-input"><ion-input id="pengalaman"></ion-input></div>
+      <div class="form-input"><ion-textarea rows="2" name="pengalaman" readonly [(ngModel)]="data_pekerjaan.pengalaman"></ion-textarea></div>
       <br>
 
     </ion-list>

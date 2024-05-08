@@ -19,11 +19,29 @@
     --color: white;
 }
 
+ion-item{
+    --inner-border-width: 0;
+}
 
 ion-list {
     padding-left: 10%;
     padding-right: 10%;
     --inner-border-width: 0;
+}
+
+.unverified{
+    --background: #F6E7AB;
+    border-radius: 6px;
+    margin-bottom: 1vh;
+}
+
+.dropdown-true{
+    pointer-events: none;
+}
+
+.flex1{
+    flex: 1;
+    margin-bottom: 0;
 }
 
 .form-label {
@@ -62,32 +80,4 @@ ion-fab-button {
     --border-radius: 15px;
     --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
     --color: white;
-}
-
-ion-tab-bar {
-    display: none;
-}
-
-
-ion-progress-bar {
-    --background: transparent; /* Remove the default background */
-    --progress-background: transparent; /* Remove the default progress background */
-    --height: 20px; /* Adjust the height of the progress bar */
-    --border-radius: 0; /* Set border radius to 0 to remove rounded corners */
-}
-
-.segment1 .bar-progress {
-    background-color: #007bff; /* Color for segment 1 */
-}
-
-.segment2 .bar-progress {
-background-color: #6c757d; /* Color for segment 2 */
-}
-
-.segment3 .bar-progress {
-background-color: #ffc107; /* Color for segment 3 */
-}
-
-.segment4 .bar-progress {
-background-color: #28a745; /* Color for segment 4 */
 }

@@ -5,7 +5,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Data Lain-lain</ion-title>
+    <ion-title>{{ title }}</ion-title>
 
     <ion-buttons slot="end">
       <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
@@ -19,48 +19,56 @@
   <form>
     <ion-list>
       <p class="form-label">No. KPJ</p>
-      <div class="form-input"><ion-input type="number" id="no_kpj"></ion-input></div>
+      <div class="form-input"><ion-input name="no_kpj" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.no_kpj"></ion-input></div>
 
       <p class="form-label">No. HLD</p>
-      <div class="form-input"><ion-input type="number" id="no_hld" maxlength="25"></ion-input></div>
+      <div class="form-input"><ion-input name="no_hld" maxlength="25" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.no_hld"></ion-input></div>
 
       <p class="form-label">No. KTP</p>
-      <div class="form-input"><ion-input type="number" id="no_ktp" maxlength="25"></ion-input></div>
+      <div class="form-input"><ion-input name="no_ktp" maxlength="25" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.no_ktp"></ion-input></div>
 
       <p class="form-label">No. NPWP</p>
-      <div class="form-input"><ion-input type="number" id="no_npwp"></ion-input></div>
-            
+      <div class="form-input"><ion-input name="no_npwp" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.no_npwp"></ion-input></div>
+
       <p class="form-label">Potong ASTEK</p>
-      <ion-checkbox class="cb-input" id="potong_astek" checked="true"></ion-checkbox>
+      <ion-checkbox class="cb-input" name="potong_astek" checked="true" readonly disabled="{{ !updatable }}" [(ngModel)]="data_lainlain.potong_astek"></ion-checkbox>
       
       <p class="form-label">Asuransi</p>
-      <div class="form-input"><ion-input value="" id="no_asuransi"></ion-input></div>
+      <div class="form-input"><ion-input value="" name="no_asuransi" readonly disabled="{{ !updatable }}" [(ngModel)]="data_lainlain.no_asuransi"></ion-input></div>
       
       <p class="form-label">Kode Wings</p>
-      <div class="form-input"><ion-input id="kode_wings"></ion-input></div>
+      <div class="form-input"><ion-input name="kode_wings" readonly disabled="{{ !updatable }}" [(ngModel)]="data_lainlain.kode_wings"></ion-input></div>
 
       <p class="form-label">Bank</p>
-      <div class="form-input"><ion-input id="bank"></ion-input></div>
+      <div class="form-input"><ion-input name="bank" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.bank"></ion-input></div>
+
+      <p class="form-label">No. Rekening</p>
+      <div class="form-input"><ion-input name="no_rekening" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.no_rekening"></ion-input></div>
 
       <p class="form-label">No. Kendaraan</p>
-      <div class="form-input"><ion-input id="no_kendaraan"></ion-input></div>
+      <div class="form-input"><ion-input name="no_kendaraan" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.no_kendaraan"></ion-input></div>
       
       <p class="form-label">Jari Bermasalah</p>
-      <div class="form-input"><ion-input id="jari_bermasalah" type="number"></ion-input></div>
+      <ion-checkbox class="cb-input" name="jari_bermasalah" checked="true" readonly disabled="{{ !updatable }}" [(ngModel)]="data_lainlain.jari_bermasalah"></ion-checkbox>
       
       <p class="form-label">Jumlah SP</p>
-      <div class="form-input"><ion-input id="jumlah_sp" type="number"></ion-input></div>
+      <div class="form-input"><ion-input name="jumlah_sp" readonly disabled="{{ !updatable }}" type="number" [(ngModel)]="data_lainlain.jumlah_sp"></ion-input></div>
 
       <p class="form-label">Email</p>
-      <div class="form-input"><ion-input id="email" type="email"></ion-input></div>
+      <div class="form-input"><ion-input name="email" type="email" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.email"></ion-input></div>
 
       <p class="form-label">Catatan</p>
-      <div class="form-input"><ion-input id="catatan"></ion-input></div>
-
-      <p class="form-label">Allowed User</p>
-      <div class="form-input"><ion-input id="allowed_user"></ion-input></div>
-      <br>
-
+      <div class="form-input"><ion-textarea rows="2" readonly disabled="{{ !updatable }}" name="catatan" [(ngModel)]="data_lainlain.catatan"></ion-textarea></div>
     </ion-list>
   </form>
+
+  <ion-fab horizontal="center">
+    <ion-fab-button *ngIf="updatable" id="updateMode">
+      <ion-icon name="create"></ion-icon>
+    </ion-fab-button>
+    <ion-alert trigger="updateMode" *ngIf="updatable" class="custom-alert" header="Perbarui data?" [buttons]="update_mode_alert"></ion-alert>
+
+    <ion-button id="btn_kirim" *ngIf="!updatable">Kirim</ion-button>
+    <ion-alert trigger="btn_kirim" *ngIf="!updatable" class="custom-alert" header="Kirim perbaruan data?" [buttons]="send_update_alert"></ion-alert>
+  </ion-fab>
 </ion-content>

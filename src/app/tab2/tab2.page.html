@@ -8,9 +8,9 @@
 
   <div id="top-info">
     <img src="../../assets/image/pp.png" alt="profile-photo">
-    <h5>Nama</h5>
-    <p>Jabatan Posisi</p>
-    <p>NIP</p>
+    <h5>{{ karyawan.nama }}</h5>
+    <p>{{ karyawan.jabatan }} - {{ karyawan.bagian }}</p>
+    <p>{{ karyawan.nip }}</p>
   </div>
 
   <hr>
@@ -19,48 +19,47 @@
     Data
     <div id="option-box">
       <ion-list>
-        <ion-item routerLink="data-pribadi">
-          <img src="../../assets/icon/data-pribadi.svg">
+        <ion-item (click)="navigateToData('data-pribadi')">
+          <ion-icon slot="start"size="large" src="../../assets/icon/data-pribadi.svg"></ion-icon>
           <ion-label>Pribadi</ion-label>
         </ion-item>
-        <ion-item routerLink="data-pekerjaan">
-          <img src="../../assets/icon/data-pekerjaan.svg">
+        <ion-item (click)="navigateToData('data-pekerjaan')">
+          <ion-icon slot="start" size="large" src="../../assets/icon/data-pekerjaan.svg"></ion-icon>
           <ion-label>Pekerjaan</ion-label>
         </ion-item>
-        <ion-item routerLink="data-lainlain">
-          <img src="../../assets/icon/data-lain-lain.svg">
+        <ion-item (click)="navigateToData('data-lainlain')">
+          <ion-icon slot="start" size="large" src="../../assets/icon/data-lain-lain.svg"></ion-icon>
           <ion-label>Lain-lain</ion-label>
         </ion-item>
-        <ion-item routerLink="data-training">
-          <img src="../../assets/icon/data-training.svg">
+        <ion-item (click)="navigateToData('data-training')">
+          <ion-icon slot="start" size="large" src="../../assets/icon/data-training.svg"></ion-icon>
           <ion-label>Training</ion-label>
         </ion-item>
-        <ion-item routerLink="data-keluarga">
-          <img src="../../assets/icon/data-keluarga.svg">
+        <ion-item (click)="navigateToData('data-keluarga')">
+          <ion-icon slot="start" size="large" src="../../assets/icon/data-keluarga.svg"></ion-icon>
           <ion-label>Keluarga</ion-label>
         </ion-item>
       </ion-list>
     </div>
     
-    <br>
     
     Lain-lain
     <div id="option-box">
       <ion-list>
-        <ion-item routerLink="pendidikan">
-          <img src="../../assets/icon/data-pendidikan.svg">
+        <ion-item (click)="navigateToData('pendidikan')">
+          <ion-icon slot="start" size="large" src="../../assets/icon/data-pendidikan.svg"></ion-icon>
           <ion-label>Pendidikan</ion-label>
         </ion-item>
-        <ion-item routerLink="bahasa-dan-organisasi">
-          <img src="../../assets/icon/bahasa&organisasi.svg">
+        <ion-item (click)="navigateToData('bahasa-dan-organisasi')">
+          <ion-icon slot="start" size="large" src="../../assets/icon/bahasa&organisasi.svg"></ion-icon>
           <ion-label>Bahasa dan Organisasi</ion-label>
         </ion-item>
-        <ion-item routerLink="pengalaman-kerja">
-          <img src="../../assets/icon/pengalaman-kerja.svg">
+        <ion-item (click)="navigateToData('pengalaman-kerja')">
+          <ion-icon slot="start" size="large" src="../../assets/icon/pengalaman-kerja.svg"></ion-icon>
           <ion-label>Pengalaman Kerja</ion-label>
         </ion-item>
-        <ion-item routerLink="absensi">
-          <img src="../../assets/icon/absensi.svg">
+        <ion-item (click)="navigateToData('absensi')">
+          <ion-icon slot="start" size="large" src="../../assets/icon/absensi.svg"></ion-icon>
           <ion-label>Absensi</ion-label>
         </ion-item>
       </ion-list>

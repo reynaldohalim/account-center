@@ -74,8 +74,11 @@ const routes: Routes = [
   {
     path: 'organisasi',
     loadChildren: () => import('./organisasi/organisasi.module').then( m => m.OrganisasiPageModule)
-  }
-
+  },
+  {
+    path: 'izin',
+    loadChildren: () => import('./izin/izin.module').then( m => m.IzinPageModule)
+  },
 ];
 
 @NgModule({

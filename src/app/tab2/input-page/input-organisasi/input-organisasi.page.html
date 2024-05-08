@@ -5,7 +5,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Input Organisasi</ion-title>
+    <ion-title>{{ title }}</ion-title>
 
     <ion-buttons slot="end">
       <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
@@ -18,18 +18,23 @@
   <form>
     <ion-list>
       <p class="form-label">Macam Kegiatan</p>
-      <div class="form-input"><ion-input type="text" id="macam_kegiatan"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="macam_kegiatan" readonly="{{ updatable }}" [(ngModel)]="organisasi.macam_kegiatan"></ion-input></div>
       
       <p class="form-label">Jabatan</p>
-      <div class="form-input"><ion-input type="text" id="jabatan" maxlength="25"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="jabatan" readonly="{{ updatable }}" maxlength="25" [(ngModel)]="organisasi.jabatan"></ion-input></div>
 
       <p class="form-label">Tahun</p>
-      <div class="form-input"><ion-input type="text" id="tahun" maxlength="9"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="tahun" readonly="{{ updatable }}" maxlength="9" [(ngModel)]="organisasi.tahun"></ion-input></div>
     </ion-list>
 
     <ion-fab horizontal="center">
-      <ion-button id="btn_kirim">Kirim</ion-button>
-    </ion-fab><br><br><br>
-    
+      <ion-fab-button *ngIf="updatable" id="updateMode">
+        <ion-icon name="create"></ion-icon>
+      </ion-fab-button>
+      <ion-alert trigger="updateMode" *ngIf="updatable" class="custom-alert" header="Perbarui data?" [buttons]="update_mode_alert"></ion-alert>
+
+      <ion-button id="btn_kirim" *ngIf="!updatable">{{ btn_kirim }}</ion-button>
+      <ion-alert trigger="btn_kirim" *ngIf="!updatable" class="custom-alert" header="Kirim perbaruan data?" [buttons]="send_update_alert"></ion-alert>
+    </ion-fab>
   </form>
 </ion-content>

@@ -9,23 +9,22 @@
 
       <ion-item>
         <ion-icon name="id-card-outline"></ion-icon>
-        <ion-input label="" type="number" placeholder="NIK"></ion-input>
+        <ion-input label="" type="number" placeholder="NIK" [(ngModel)]="register_akun.nik" pattern="[0-9]{10}" required></ion-input>
       </ion-item>
-
 
       <ion-item>
         <ion-icon name="call-outline"></ion-icon>
-        <ion-input label="" type="number" placeholder="No. HP"></ion-input>
+        <ion-input label="" type="number" placeholder="No. HP" [(ngModel)]="register_akun.no_hp" pattern="[0-9]{10}" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-icon name="mail-outline"></ion-icon>
-        <ion-input label="" type="email" placeholder="Email"></ion-input>
+        <ion-input label="" type="email" placeholder="Email" [(ngModel)]="register_akun.email" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-icon name="lock-closed-outline"></ion-icon>
-        <ion-input label="" type="password" placeholder="Password"></ion-input>
+        <ion-input label="" type="password" placeholder="Password" [(ngModel)]="register_akun.password" minlength="8" required></ion-input>
         <ion-button fill="clear" slot="end" aria-label="Show/hide">
         <ion-icon slot="icon-only" name="eye-outline" aria-hidden="true" id="hide_icon"></ion-icon>
       </ion-button>
@@ -33,7 +32,7 @@
 
       <ion-item>
         <ion-icon name="lock-closed-outline"></ion-icon>
-        <ion-input label="" type="password" placeholder="Verifikasi password"></ion-input>
+        <ion-input label="" type="password" placeholder="Verifikasi password" [(ngModel)]="verifikasi_password"minlength="8" required></ion-input>
         <ion-button fill="clear" slot="end" aria-label="Show/hide">
         <ion-icon slot="icon-only" name="eye-outline" aria-hidden="true" id="hide_icon"></ion-icon>
       </ion-button>
@@ -42,7 +41,7 @@
     </div>
 
     <div class="action-buttons">
-      <ion-button shape="round" size="large" class="login-button">Daftar</ion-button>
+      <ion-button shape="round" size="large" class="login-button" (click)="register()">Daftar</ion-button>
       <p>Sudah punya akun? <a href="../login/">Masuk</a></p>
     </div>
   </div>

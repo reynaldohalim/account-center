@@ -17,27 +17,158 @@
 <ion-content>
   <br>
   <ion-list>
-      <ion-select class="form-input" id="durasi" label="" label-placement="floating">
+    <ion-select class="form-input" id="durasi" label="" label-placement="floating">
+      <ion-select-option value="satu-periode">Satu periode</ion-select-option>
+      <ion-select-option value="custom">Pilih bulan</ion-select-option>
+    </ion-select>
+
+    <br>
+    <div style="display: flex;">
+      <ion-select class="form-input" id="durasi" label="" label-placement="floating" style="flex: 1;">
         <ion-select-option value="satu-periode">Satu periode</ion-select-option>
         <ion-select-option value="custom">Pilih bulan</ion-select-option>
       </ion-select>
-
-      <br>
-      <div style="display: flex;">
-        <ion-select class="form-input" id="durasi" label="" label-placement="floating" style="flex: 1;">
-          <ion-select-option value="satu-periode">Satu periode</ion-select-option>
-          <ion-select-option value="custom">Pilih bulan</ion-select-option>
-        </ion-select>
-        <p style="flex: 0.1;"> </p>
-        <ion-select class="form-input" id="durasi" label="" label-placement="floating" style="flex: 1;">
-          <ion-select-option value="satu-periode">Satu periode</ion-select-option>
-          <ion-select-option value="custom">Pilih bulan</ion-select-option>
-        </ion-select>
-      </div>
-
-      <!-- <ion-button id="btn_show" (click)="gChart()">Edit</ion-button> -->
-
-      <div id="chart_div" style="background-color: #F6F1EB;"></div>
+      <p style="flex: 0.1;"> </p>
+      <ion-select class="form-input" id="durasi" label="" label-placement="floating" style="flex: 1;">
+        <ion-select-option value="satu-periode">Satu periode</ion-select-option>
+        <ion-select-option value="custom">Pilih bulan</ion-select-option>
+      </ion-select>
+    </div>
   </ion-list>
 
+  <!-- Stacked Progress Bar -->
+  <ion-item class="stacked-chart">
+    <ion-progress-bar [value]="1" style="width: 55%;" class="inline absen_full_color" id="absen_full_bar"></ion-progress-bar>
+    <ion-progress-bar [value]="1" style="width: 10%;" class="inline cuti_color" id="cuti_bar"></ion-progress-bar>
+    <ion-progress-bar [value]="1" style="width: 27%;" class="inline tugas_color" id="tugas_bar"></ion-progress-bar>
+    <ion-progress-bar [value]="1" style="width: 13%;" class="inline absen_error_color" id="absen_error_bar"></ion-progress-bar>
+  </ion-item>
+  
+  <ion-list>
+
+    <!-- Absen Full Section -->
+    <ion-item class="item-card">
+      <ion-icon name="checkmark-circle" class="absen_full_color"></ion-icon>
+      <ion-list>
+        <p class="inline bold" id="">55%</p>
+        <ion-label class="inline"> Absen Full</ion-label>
+        <ion-progress-bar [value]="100" class="absen_full_color"></ion-progress-bar>  
+      </ion-list>
+    </ion-item>
+
+    <!-- Cuti Section -->
+    <ion-list class="item-card" id="cuti_section">
+      <ion-item class="absen-item">
+        <ion-icon name="alert-circle" class="cuti_color"></ion-icon>
+        <ion-list>
+          <p class="inline bold" id="">10%</p>
+          <ion-label class="inline"> Cuti</ion-label>
+          <ion-progress-bar [value]="100" class="cuti_color"></ion-progress-bar>  
+        </ion-list>
+      </ion-item>
+
+      <!-- Detail Cuti -->
+      <!-- <ion-item class="absen-item-detail">
+        <ion-list>
+          <br>
+          <p class="inline bold" id="presentase_cuti">1/10</p>
+          <ion-label class="inline"> Cuti terpakai</ion-label>
+          <br><br>
+          <p class="inline" id="jenis_cuti">Cuti bersama (</p>
+          <p class="inline" id="jumlah_jenis_cuti">1</p>
+          <p class="inline">)</p>
+          <ul id="item_cuti">
+            <li><a routerLink="detail-absen">01/03/2024</a></li>
+          </ul>
+
+          <p class="inline" id="jenis_cuti">Cuti bersama (</p>
+          <p class="inline" id="jumlah_jenis_cuti">1</p>
+          <p class="inline">)</p>
+          <ul id="item_cuti">
+            <li><a href="">01/03/2024</a></li>
+          </ul>
+
+          <p class="inline" id="jenis_cuti">Cuti bersama (</p>
+          <p class="inline" id="jumlah_jenis_cuti">1</p>
+          <p class="inline">)</p>
+          <ul id="item_cuti">
+            <li><a href="">01/03/2024</a></li>
+          </ul>
+        </ion-list>
+      </ion-item> -->
+    </ion-list>
+
+    <!-- Tugas Section -->
+    <ion-list class="item-card" id="tugas_section">
+      <ion-item class="absen-item">
+        <ion-icon name="alert-circle" class="tugas_color"></ion-icon>
+        <ion-list>
+          <p class="inline bold" id="">27%</p>
+          <ion-label class="inline"> Tugas</ion-label>
+          <ion-progress-bar [value]="100" class="tugas_color"></ion-progress-bar>  
+        </ion-list>
+      </ion-item>
+
+      <!-- Detail Tugas -->
+      <!-- <ion-item class="absen-item-detail">
+        <ion-list>
+          <br>
+          <p class="inline bold" id="presentase_tugas">3</p>
+          <ion-label class="inline"> Jumlah tugas</ion-label>
+          <br><br>
+          <ul id="item_tugas">
+            <li><a href="">01/03/2024</a></li>
+            <li><a href="">01/03/2024</a></li>
+            <li><a href="">01/03/2024</a></li>
+          </ul>
+        </ion-list>
+      </ion-item> -->
+    </ion-list>
+
+    <!-- Absen Error Section -->
+    <ion-list class="item-card" id="absen_error_section">
+      <ion-item class="absen-item">
+        <ion-icon name="alert-circle" class="absen_error_color"></ion-icon>
+        <ion-list>
+          <p class="inline bold" id="">13%</p>
+          <ion-label class="inline"> Absen Error</ion-label>
+          <ion-progress-bar [value]="100" class="absen_error_color"></ion-progress-bar>  
+        </ion-list>
+      </ion-item>
+
+      <!-- Detail Error -->
+      <!-- <ion-item class="absen-item-detail">
+        <ion-list>
+          <br>
+          <p class="inline bold" id="presentase_absen_error">3</p>
+          <ion-label class="inline"> Jumlah Absen Error</ion-label>
+          <br><br>
+          <p class="inline" id="jenis_absen_error">Tidak Absen (</p>
+          <p class="inline" id="jumlah_jenis_absen_error">1</p>
+          <p class="inline">)</p>
+          <ul id="item_absen_error">
+            <li><a routerLink="detail-absen">01/03/2024</a></li>
+          </ul>
+
+          <p class="inline" id="jenis_absen_error">Absen tidak lengkap (</p>
+          <p class="inline" id="jumlah_jenis_absen_error">1</p>
+          <p class="inline">)</p>
+          <ul id="item_absen_error">
+            <li><a href="">01/03/2024</a></li>
+          </ul>
+
+          <p class="inline" id="jenis_absen_error">Terlambat / pulang awal (</p>
+          <p class="inline" id="jumlah_jenis_absen_error">1</p>
+          <p class="inline">)</p>
+          <ul id="item_absen_error">
+            <li><a href="">01/03/2024</a></li>
+          </ul>
+        </ion-list>
+      </ion-item> -->
+    </ion-list>
+
+    <ion-fab horizontal="center">
+      <ion-button id="btn_kirim" (click)="navigateToIzin()">Izin</ion-button>
+    </ion-fab><br><br><br>
+  </ion-list>
 </ion-content>

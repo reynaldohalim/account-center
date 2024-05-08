@@ -17,47 +17,55 @@
   <form>
     <ion-list>
       <p class="form-label">Nama Perusahaan</p>
-      <div class="form-input"><ion-input type="text" id="nama_perusahaan" maxlength="25"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="nama_perusahaan" maxlength="25" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.nama_perusahaan"></ion-input></div>
 
       <p class="form-label">Alamat</p>
-      <div class="form-input"><ion-input type="text" id="alamat"></ion-input></div>
+      <div class="form-input"><ion-textarea rows="2" type="text" name="alamat" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.alamat"></ion-textarea></div>
 
       <p class="form-label">Tahun Awal</p>
-      <div class="form-input"><ion-input type="number" id="tahun_awal"></ion-input></div>
+      <div class="form-input"><ion-input type="number" name="tahun_awal" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.tahun_awal"></ion-input></div>
 
       <p class="form-label">Tahun Akhir</p>
-      <div class="form-input"><ion-input type="number" id="tahun_akhir"></ion-input></div>
+      <div class="form-input"><ion-input type="number" name="tahun_akhir" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.tahun_akhir"></ion-input></div>
 
       <p class="form-label">Alasan Pindah</p>
-      <div class="form-input"><ion-input id="alasan_pindah"></ion-input></div>
+      <div class="form-input"><ion-textarea rows="2" name="alasan_pindah" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.alasan_pindah"></ion-textarea></div>
 
       <p class="form-label">Total Karyawan</p>
-      <div class="form-input"><ion-input type="number" id="total_karyawan"></ion-input></div>
+      <div class="form-input"><ion-input type="number" name="total_karyawan" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.total_karyawan"></ion-input></div>
 
       <p class="form-label">Total Bawahan</p>
-      <div class="form-input"><ion-input type="number" id="total_bawahan"></ion-input></div>
+      <div class="form-input"><ion-input type="number" name="total_bawahan" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.total_bawahan"></ion-input></div>
 
       <p class="form-label">Uraian Pekerjaan</p>
-      <div class="form-input"><ion-input id="uraian_pekerjaan"></ion-input></div>
+      <div class="form-input"><ion-textarea rows="2" name="uraian_pekerjaan" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.uraian_pekerjaan"></ion-textarea></div>
 
       <p class="form-label">Nama Atasan</p>
-      <div class="form-input"><ion-input id="nama_atasan"></ion-input></div>
+      <div class="form-input"><ion-input name="nama_atasan" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.nama_atasan"></ion-input></div>
 
       <p class="form-label">No. Telepon</p>
-      <div class="form-input"><ion-input type="tel" value="" id="no_telepon"></ion-input></div>
+      <div class="form-input"><ion-input type="tel" value="" name="no_telepon" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.no_telepon"></ion-input></div>
 
       <p class="form-label">Gaji</p>
-      <div class="form-input"><ion-input type="number" id="gaji"></ion-input></div>
+      <div class="form-input"><ion-input type="number" name="gaji" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.gaji"></ion-input></div>
 
       <p class="form-label">Jabatan Awal</p>
-      <div class="form-input"><ion-input id="jabatan_awal"></ion-input></div>
+      <div class="form-input"><ion-input name="jabatan_awal" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.jabatan_awal"></ion-input></div>
 
       <p class="form-label">Jabatan Akhir</p>
-      <div class="form-input"><ion-input id="jabatan_akhir"></ion-input></div>
+      <div class="form-input"><ion-input name="jabatan_akhir" readonly="{{ updatable }}" [(ngModel)]="pengalaman_kerja.jabatan_akhir"></ion-input></div>
       
     </ion-list>
+
     <ion-fab horizontal="center">
-      <ion-button id="btn_kirim">Kirim</ion-button>
-    </ion-fab><br><br><br>
+      <ion-fab-button *ngIf="updatable" id="updateMode">
+        <ion-icon name="create"></ion-icon>
+      </ion-fab-button>
+      <ion-alert trigger="updateMode" *ngIf="updatable" class="custom-alert" header="Perbarui data?" [buttons]="update_mode_alert"></ion-alert>
+
+      <ion-button id="btn_kirim" *ngIf="!updatable">{{ btn_kirim }}</ion-button>
+      <ion-alert trigger="btn_kirim" *ngIf="!updatable" class="custom-alert" header="Kirim perbaruan data?" [buttons]="send_update_alert"></ion-alert>
+    </ion-fab>
   </form>
+  <br><br><br>
 </ion-content>

@@ -17,6 +17,8 @@ ion-content {
     hr {
         width: 85%;
         background-color: #CBC4C4;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
     }
 
     #menu {
@@ -28,6 +30,7 @@ ion-content {
         background-color: #EBE6E3;
         border-radius: 10px;
         padding: 5px;
+        margin-bottom: 2vh;
     }
 
     ion-list{
@@ -37,15 +40,5 @@ ion-content {
     ion-item{
         --background: #ebe6e3;
         --inner-border-width: 0;
-        
-        img{
-            padding-right: 5px;
-        }
-        
-        ion-label{
-            padding-left: 5px;
-        }
     }
-
-
 }

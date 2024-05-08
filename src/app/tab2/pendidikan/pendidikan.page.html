@@ -1,6 +1,5 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -14,13 +13,29 @@
 </ion-header>
 
 <ion-content>
-  <div id="data-pendidikan">
+  <div *ngIf="!no_data">
+    <ion-list *ngIf="data_terverifikasi">
+      <p>Data terverifikasi</p>
+      <ion-item *ngFor="let data of arr_pendidikan" (click)="navigateToEdit(data.id)">
+        {{ data.tingkat }}
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="data_belum_terverifikasi">
+      <br>
+      <p>Data belum terverifikasi</p>
+      <ion-item class="unverified" *ngFor="let data of arr_data_belum_terverifikasi" (click)="navigateToEdit(data.id)">
+        {{ data.tingkat}}
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
   </div>
 
-  <p class="centered-content" id="no_data">No Data</p>
+  <p class="centered-content" *ngIf="no_data">Tidak ada data</p>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="center">
-    <ion-fab-button routerLink="../input-pendidikan">
+    <ion-fab-button (click)="navigateToEdit('')">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

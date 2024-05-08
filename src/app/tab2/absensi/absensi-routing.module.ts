@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AbsensiPage
+  },
+  {
+    path: 'detail-absen',
+    loadChildren: () => import('./detail-absen/detail-absen.module').then( m => m.DetailAbsenPageModule)
   }
 ];
 

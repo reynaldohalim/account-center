@@ -5,7 +5,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Input Pendidikan</ion-title>
+    <ion-title>{{ title }}</ion-title>
 
     <ion-buttons slot="end">
       <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
@@ -18,40 +18,40 @@
     <ion-list>
 
       <p class="form-label">Tingkat</p>
-      <ion-select class="form-input" id="tingkat" label="">
-        <ion-select-option value="sd">SD</ion-select-option>
-        <ion-select-option value="smp">SMP</ion-select-option>
-        <ion-select-option value="sma">SMA</ion-select-option>
-        <ion-select-option value="d3">D3</ion-select-option>
-        <ion-select-option value="s1">S1</ion-select-option>
-        <ion-select-option value="s2">S2</ion-select-option>
-        <ion-select-option value="s3">S3</ion-select-option>
+      <ion-select class="form-input dropdown-{{ updatable }}" name="tingkat" label="" [(ngModel)]="pendidikan.tingkat">
+        <ion-select-option value="SD">SD</ion-select-option>
+        <ion-select-option value="SMP">SMP</ion-select-option>
+        <ion-select-option value="SMA">SMA</ion-select-option>
+        <ion-select-option value="D3">D3</ion-select-option>
+        <ion-select-option value="S1">S1</ion-select-option>
+        <ion-select-option value="S2">S2</ion-select-option>
+        <ion-select-option value="S3">S3</ion-select-option>
       </ion-select>
       
       <p class="form-label">Sekolah</p>
-      <div class="form-input"><ion-input type="text" id="sekolah"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="sekolah" readonly="{{ updatable }}" [(ngModel)]="pendidikan.sekolah"></ion-input></div>
 
       <p class="form-label">Kota</p>
-      <div class="form-input"><ion-input type="text" id="kota"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="kota" readonly="{{ updatable }}" [(ngModel)]="pendidikan.kota"></ion-input></div>
 
       <p class="form-label">Jurusan</p>
-      <div class="form-input"><ion-input type="text" id="jurusan"></ion-input></div>
-
-      <p class="form-label">Tahun Masuk</p>
-      <div class="form-input"><ion-input type="number" id="tahun_masuk"></ion-input></div>
+      <div class="form-input"><ion-input type="text" name="jurusan" readonly="{{ updatable }}" [(ngModel)]="pendidikan.jurusan"></ion-input></div>
 
       <p class="form-label">Tahun Lulus</p>
-      <div class="form-input"><ion-input type="number" id="tahun_lulus"></ion-input></div>
+      <div class="form-input"><ion-input type="number" name="tahun_lulus" readonly="{{ updatable }}" [(ngModel)]="pendidikan.tahun"></ion-input></div>
 
       <p class="form-label">IPK</p>
-      <div class="form-input"><ion-input type="number" id="ipk"></ion-input></div>
-
-      <p class="form-label">Lulus</p>
-      <ion-checkbox class="cb-input" id="lulus" checked="false"></ion-checkbox>
-
+      <div class="form-input"><ion-input type="number" name="ipk" readonly="{{ updatable }}" [(ngModel)]="pendidikan.ipk"></ion-input></div>
     </ion-list>
+
     <ion-fab horizontal="center">
-      <ion-button id="btn_kirim">Kirim</ion-button>
-    </ion-fab><br><br><br>
+      <ion-fab-button *ngIf="updatable" id="updateMode">
+        <ion-icon name="create"></ion-icon>
+      </ion-fab-button>
+      <ion-alert trigger="updateMode" *ngIf="updatable" class="custom-alert" header="Perbarui data?" [buttons]="update_mode_alert"></ion-alert>
+
+      <ion-button id="btn_kirim" *ngIf="!updatable">{{ btn_kirim }}</ion-button>
+      <ion-alert trigger="btn_kirim" *ngIf="!updatable" class="custom-alert" header="Kirim perbaruan data?" [buttons]="send_update_alert"></ion-alert>
+    </ion-fab>
   </form>
 </ion-content>

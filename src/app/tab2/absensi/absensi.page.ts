@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { ActivatedRoute, Router } from '@angular/router';
+import axios from 'axios';
 
 declare var google: { visualization: {
   PieChart: any;
@@ -14,49 +15,61 @@ declare var google: { visualization: {
 
 
 export class AbsensiPage implements OnInit{
-  constructor() {  }
+  karyawan_aktif: boolean = true;
 
-  ngOnInit(): void {
-      this.gChart();
+  absensi={
+    nip:0,
+    absen_full:0,
+    cuti:0,
+    tugas:0,
+    absen_error:0
   }
-  
-  gChart(){
-    var screenWidth = window.innerWidth;
-    var screenHeight = window.innerHeight;
-    var chartWidth = screenWidth * 0.8; // 80% of the screen width
-    var chartHeight = screenHeight * 0.1; // 60% of the screen height
-    
-    var data = new google.visualization.DataTable();
-    data.addColumn('number', 'Mushrooms');
-    data.addColumn('number', 'Onions');
-    data.addColumn('number', 'Olives');
-    data.addColumn('number', 'Zucchini');
-    data.addColumn('number', 'Pepperoni');
-    data.addRows([
-      [3, 1, 1, 1, 2],
-    ]);
-      
-      // Set chart options
-    var options = {
-      width: chartWidth,
-      height: chartHeight,
-      isStacked: true,
-      legend: { position: 'none' }, // Hide legend.
-      hAxis: {
-        title: 'Toppings',
-        titleTextStyle: { color: '#333' }, // Set title color
-        textStyle: { color: 'transparent' }, // Set axis label color
-      },
-      vAxis: {
-        title: 'Slices',
-        titleTextStyle: { color: '#333' }, // Set title color
-        textStyle: { color: '#333' }, // Set axis label color
-        gridlines: { color: 'transparent' }, // Hide vertical gridlines
-      },
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params && params['nip']) {
+        this.absensi.nip = params['nip'];
+      }
+      else{
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.getData();
+  }
+
+  getData(){
+    const config={
+      params:{
+        'nip' : this.absensi.nip,
+        'data' : 'absensi'
+      }
+    }
+
+    axios.get(`http://localhost/TA_DB/data.php`, config)
+    .then(
+      (response) => {
+        // this.absensi ={
+        //   nip: response.data[0].nip,
+        //   absen_full: response.data[0].absen_full,
+        //   cuti: response.data[0].cuti,
+        //   tugas: response.data[0].tugas,
+        //   absen_error: response.data[0].absen_error,
+        // }
+      }
+    )
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
+  navigateToIzin(){
+    const data ={
+      nip: `${this.absensi.nip}`,
     };
 
-    // Instantiate and draw the chart
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
+    this.router.navigate(['tabs/tab2/izin'], {queryParams: data});
   }
 }
