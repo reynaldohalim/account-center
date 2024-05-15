@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { LogarithmicScale } from 'chart.js';
 
 @Component({
   selector: 'app-input-izin',
@@ -10,7 +11,7 @@ import axios from 'axios';
 export class InputIzinPage implements OnInit {
   izin = {
     no_ijin:'',
-    nip:0,
+    nip:'',
     jenis_izin:'',
     tgl_izin:'',
     jam_in:null,
@@ -28,10 +29,15 @@ export class InputIzinPage implements OnInit {
     title = 'Input Izin';
     btn_kirim = 'Kirim';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
-
-  ngOnInit() {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
     this.activatedRoute.queryParams.subscribe(params => {
+      if (params && params['nip']) {
+        this.izin.nip = params['nip'];
+      }
+      else{
+        this.router.navigate(['/login']);
+      }
+      
       this.getJenisIzin();
 
       if (params && params['no_ijin']) {
@@ -40,14 +46,10 @@ export class InputIzinPage implements OnInit {
         this.title = this.izin.no_ijin;
         this.btn_kirim = 'Perbarui';
       }
-
-      if (params && params['nip']) {
-        this.izin.nip = params['nip']
-      }
-      else{
-        this.router.navigate(['/login']);
-      }
     });
+  }
+
+  ngOnInit() {
   }
 
   send() {

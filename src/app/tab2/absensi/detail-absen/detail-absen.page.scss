@@ -1,24 +1,4 @@
-ion-item{
-    --inner-border-width: 0;
-}
-
-ion-list ion-item ion-icon{
-    font-size: 50px;
-}
-
-ion-item ion-list{
-    width: 100%;
-    padding: 0;
-    margin-left: 1vh;
-}
-
-.absen-item, .absen-item-detail{
-    --background: #E8E3E1;
-}
-
-.absen-item-detail{
-    margin-left: 1.5vh;
-}
+@import '../absensi.page.scss';
 
 .item-card{
     margin-left: 10vw;
@@ -35,32 +15,4 @@ ion-item ion-list{
     ion-list{
         background: #E8E3E1;
     }
-}
-
-.absen_full_color{
-    color: #719332;
-    --progress-background: #719332;
-}
-
-.cuti_color{
-    color: #EAA210;
-    --progress-background: #EAA210;
-}
-
-.tugas_color{
-    color: #CB631C;
-    --progress-background: #CB631C;
-}
-
-.absen_error_color{
-    color: #901F25;
-    --progress-background: #901F25;
-}
-
-.inline{
-    display: inline;
-}
-
-.bold{
-    font-weight: bold;
 }

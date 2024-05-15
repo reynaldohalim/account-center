@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -14,27 +15,40 @@ export class RegisterPage implements OnInit {
     password:''
   }
 
+  errorMessage = '';
+  success = true;
   verifikasi_password= null;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  setSuccess(isSuccess: boolean) {
+    this.success = isSuccess;
+  }
+
   register() {
     if(this.register_akun.password == this.verifikasi_password){
-      axios.post("http://localhost/TA_DB/register.php", this.register_akun)
+      axios.post("http://localhost/TA_DB/data.php", this.register_akun)
       .then(  
         (response) => {
           console.log(response.data);
+
+          this.setSuccess(response.data['success']);
+          if(this.success) this.router.navigate(['login']);
+          else this.errorMessage = response.data['message'];
         }
       )
       .catch((error) => {
         console.log(error);
       })
+      this.setSuccess(true);
     }
     else{
-      console.log('Password != Verifikasi');
+      this.setSuccess(false);
+      this.errorMessage = 'Kata sandi dan verifikasi kata sandi tidak cocok!';
+      this.router.navigate(['login']);
     }
   }
 }

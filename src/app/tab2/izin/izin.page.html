@@ -16,9 +16,9 @@
 <ion-content>
   <div id="data-izin">
     <ion-list>
-      <ion-item *ngFor="let data of arr_izin">
-        {{ data.no_ijin}}
-        <ion-icon name="create-outline" slot="end" (click)="navigateToEdit(data.no_ijin)"></ion-icon>
+      <ion-item *ngFor="let data of arr_izin" (click)="navigateToEdit(data.no_ijin)">
+        {{ data.no_ijin }}
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
       </ion-item>
     </ion-list>
   </div>

@@ -16,9 +16,10 @@
 <ion-content>
   <div *ngIf="!no_data">
     <ion-list  *ngIf="data_terverifikasi">
-      <ion-item *ngFor="let data of arr_pengalaman_kerja">
+      <p>Data terverifikasi</p>
+      <ion-item *ngFor="let data of arr_pengalaman_kerja" (click)="navigateToEdit(data.id)">
         {{ data.nama_perusahaan}} - {{ data.tahun_akhir}}
-        <ion-icon name="create-outline" slot="end" (click)="navigateToEdit(data.id)"></ion-icon>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
       </ion-item>
     </ion-list>
 

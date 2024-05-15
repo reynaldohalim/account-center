@@ -13,20 +13,26 @@ export class LoginPage implements OnInit {
     password:''
   };
 
-  success = false;
+  success = true;
+  errorMessage = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
 
+  setSuccess(isSuccess: boolean) {
+    this.success = isSuccess;
+  }
+
   login() {
-    axios.post("http://localhost/TA_DB/login.php", this.akun)
+    axios.post("http://localhost/TA_DB/data.php", this.akun)
       .then(
         (response) => {
-          this.success = response.data['success'];
-          console.log(response.data);
+          console.log(response);
           
+          this.errorMessage = response.data['message'];
+          this.setSuccess(response.data['success']);
 
           //navigate to home
           if(this.success){
@@ -43,5 +49,6 @@ export class LoginPage implements OnInit {
       .catch((error) => {
         console.log(error);
       })
+      this.setSuccess(true);
   }
 }

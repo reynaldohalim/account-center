@@ -57,6 +57,7 @@ export class DataLainlainPage implements OnInit {
       cssClass: 'alert-button-confirm',
       handler: () => {
         this.update();
+        this.updateMode();
       },
     },
   ];
@@ -114,7 +115,8 @@ export class DataLainlainPage implements OnInit {
   }
 
   updateMode(){
-    this.title = 'Perbarui Data Lain-lain';
+    if(this.title == 'Data Lain-lain') this.title = 'Perbarui Data Lain-lain';
+    else this.title = 'Data Lain-lain';
     this.updatable = !this.updatable;
     this.old_data = Object.assign({}, this.data_lainlain);
   }

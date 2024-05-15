@@ -129,6 +129,8 @@ export class InputKeluargaPage implements OnInit {
         'data' : this.data_keluarga,
         'data_lama' : ''
       }
+      console.log('that');
+      
     }
 
     axios.post("http://localhost/TA_DB/data.php", config)

@@ -5,7 +5,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title id="detail_absen_title">Detail Absen</ion-title>
+    <ion-title id="detail_absen_title">Absensi</ion-title>
 
     <ion-buttons slot="end">
       <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
@@ -18,40 +18,36 @@
   <br>
   <ion-list class="item-card">
     <ion-item class="absen-item">
-      <ion-icon name="alert-circle" class="cuti_color" id="detail_absen_icon"></ion-icon>
-        <p class="bold" id="tanggal">01/03/2024</p>
+      <ion-icon name="{{ icon_name }}" class="{{ icon_color }}"></ion-icon>
+        <p class="bold">{{ formatDate(detail_absen.tgl_ijin) }}</p>
     </ion-item>
 
     <br>
 
     <ion-item class="absen-item-detail">
       <ion-list>
-        <p class="inline bold">No. Ijin: </p>
-        <ion-label class="inline" id="no_ijin">I00026562009</ion-label>
+        <p class="inline bold" *ngIf="!error">No. Ijin: </p>
+        <ion-label class="inline" *ngIf="!error">{{ detail_absen.no_ijin }}</ion-label>
 
-        <br><br>
+        <br *ngIf="!error"><br *ngIf="!error">
 
-        <p class="inline bold">Jenis Ijin: </p>
-        <ion-label class="inline" id="jenis_ijin">A. 10 Cuti Tahunan</ion-label>
+        <p class="inline bold" *ngIf="!error">Jenis Ijin: </p>
+        <ion-label class="inline" *ngIf="!error">{{ detail_absen.jenis_ijin }}</ion-label>
 
-        <br><br>
+        <br *ngIf="!error"><br *ngIf="!error">
         
         <p class="inline bold">Keterangan: </p>
-        <ion-label id="keterangan">Liburan ke luar kota</ion-label>
+        <ion-label>{{ detail_absen.keterangan }}</ion-label>
 
-        <br><br>
+        <br *ngIf="!error"><br *ngIf="!error">
 
-        <p class="inline bold">Approve 1: </p>
-        <ion-label class="inline" id="tanggal_approve1">08/04/2024 </ion-label>
-        <ion-label class="inline"> - </ion-label>
-        <ion-label class="inline" id="approver1">2139573829</ion-label>
+        <p class="inline bold" *ngIf="!error">Approve 1: </p>
+        <ion-label class="inline" *ngIf="!error">{{ detail_absen.tgl_approve1 }}</ion-label>
 
-        <br>
+        <br *ngIf="!error">
 
-        <p class="inline bold">Approve 2: </p>
-        <ion-label class="inline" id="tanggal_approve2">08/04/2024 </ion-label>
-        <ion-label class="inline"> - </ion-label>
-        <ion-label class="inline" id="approver2">yohan</ion-label>
+        <p class="inline bold" *ngIf="!error">Approve 2: </p>
+        <ion-label class="inline" *ngIf="!error">{{detail_absen.tgl_approve2 }}</ion-label>
       </ion-list>
     </ion-item>
   </ion-list>

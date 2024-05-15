@@ -99,12 +99,14 @@ export class DataPribadiPage implements OnInit {
       cssClass: 'alert-button-confirm',
       handler: () => {
         this.update();
+        this.updateMode();
       },
     },
   ];
 
   updateMode(){
-    this.title = 'Perbarui Data Pribadi';
+    if(this.title == 'Data Pribadi') this.title = 'Perbarui Data Pribadi';
+    else this.title = 'Data Pribadi';
     this.updatable = !this.updatable;
     this.old_data = Object.assign({}, this.data_pribadi);
   }
@@ -202,4 +204,6 @@ export class DataPribadiPage implements OnInit {
       console.log(error);
     })
   }
+
+  
 }

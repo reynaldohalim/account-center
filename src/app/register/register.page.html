@@ -45,4 +45,6 @@
       <p>Sudah punya akun? <a href="../login/">Masuk</a></p>
     </div>
   </div>
+
+  <ion-toast [isOpen]="!success" message="{{ errorMessage }}" [duration]="5000" (didDismiss)="setSuccess(false)"></ion-toast>
 </ion-content>
