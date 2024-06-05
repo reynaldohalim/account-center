@@ -27,10 +27,10 @@ export class OrganisasiPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getDataOrganisasi()
+    this.getData()
   }
 
-  getDataOrganisasi(){
+  getData(){
     const config={
       params:{
         'data' : 'organisasi',
@@ -53,10 +53,10 @@ export class OrganisasiPage implements OnInit {
             else{
               this.arr_data_belum_terverifikasi.push(data);
             }
-          }      
+          }
         }
         if (this.arr_organisasi.length > 0) this.data_terverifikasi=true;
-        if (this.arr_data_belum_terverifikasi.length > 0) this.data_belum_terverifikasi=true;            
+        if (this.arr_data_belum_terverifikasi.length > 0) this.data_belum_terverifikasi=true;
       }
     )
     .catch((error) => {
@@ -78,6 +78,6 @@ export class OrganisasiPage implements OnInit {
         nip: this.nip,
       }
     }
-    this.router.navigate(['tabs/tab2/input-organisasi'], {queryParams: data});
+    this.router.navigate(['input-organisasi'], {queryParams: data});
   }
 }

@@ -34,6 +34,6 @@ export class Tab2Page implements OnInit{
       nip: `${this.karyawan.nip}`,
     };
 
-    this.router.navigate(['tabs/tab2/'+page], {queryParams: data});
+    this.router.navigate([''+page], {queryParams: data});
   }
 }

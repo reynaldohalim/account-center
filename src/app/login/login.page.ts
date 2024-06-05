@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
       .then(
         (response) => {
           console.log(response);
-          
+
           this.errorMessage = response.data['message'];
           this.setSuccess(response.data['success']);
 
@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
               jabatan: `${response.data.jabatan}`,
               bagian: `${response.data.bagian}`
             }
-            this.router.navigate(['tabs/tab2'], {queryParams: data});
+            this.router.navigate(['tab2'], {queryParams: data});
           }
         }
       )

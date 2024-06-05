@@ -28,10 +28,10 @@ export class PengalamanKerjaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getDataPengalaman_kerja();
+    this.getData();
   }
 
-  getDataPengalaman_kerja(){
+  getData(){
     const config={
       params:{
         'data' : 'pengalaman_kerja',
@@ -54,10 +54,10 @@ export class PengalamanKerjaPage implements OnInit {
             else{
               this.arr_data_belum_terverifikasi.push(data);
             }
-          }      
+          }
         }
         if (this.arr_pengalaman_kerja.length > 0) this.data_terverifikasi=true;
-        if (this.arr_data_belum_terverifikasi.length > 0) this.data_belum_terverifikasi=true;        
+        if (this.arr_data_belum_terverifikasi.length > 0) this.data_belum_terverifikasi=true;
       }
     )
     .catch((error) => {
@@ -79,6 +79,6 @@ export class PengalamanKerjaPage implements OnInit {
         nip: this.nip,
       }
     }
-    this.router.navigate(['tabs/tab2/input-pengalaman-kerja'], {queryParams: data});
+    this.router.navigate(['input-pengalaman-kerja'], {queryParams: data});
   }
 }

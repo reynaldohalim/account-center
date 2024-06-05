@@ -25,10 +25,10 @@ export class IzinPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getIzin()
+    this.getData()
   }
 
-  getIzin(){
+  getData(){
     const config={
       params:{
         'data' : 'izin',
@@ -52,7 +52,7 @@ export class IzinPage implements OnInit {
     let data ={}
 
     if(no_ijin != '') {
-      data ={ 
+      data ={
         no_ijin: `${no_ijin}`,
         nip: this.nip,
       }
@@ -62,6 +62,6 @@ export class IzinPage implements OnInit {
         nip: this.nip,
       }
     }
-    this.router.navigate(['tabs/tab2/input-izin'], {queryParams: data});
+    this.router.navigate(['input-izin'], {queryParams: data});
   }
 }

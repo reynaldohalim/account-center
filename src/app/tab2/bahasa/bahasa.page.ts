@@ -27,10 +27,10 @@ export class BahasaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getDataBahasa();
+    this.getData();
     }
 
-  getDataBahasa(){
+  getData(){
     const config={
       params:{
         'data' : 'bahasa',
@@ -53,10 +53,10 @@ export class BahasaPage implements OnInit {
             else{
               this.arr_data_belum_terverifikasi.push(data);
             }
-          }      
-        } 
+          }
+        }
         if (this.arr_bahasa.length > 0) this.data_terverifikasi=true;
-        if (this.arr_data_belum_terverifikasi.length > 0) this.data_belum_terverifikasi=true;           
+        if (this.arr_data_belum_terverifikasi.length > 0) this.data_belum_terverifikasi=true;
       }
     )
     .catch((error) => {
@@ -78,6 +78,6 @@ export class BahasaPage implements OnInit {
         nip: this.nip,
       }
     }
-    this.router.navigate(['tabs/tab2/input-bahasa'], {queryParams: data});
+    this.router.navigate(['input-bahasa'], {queryParams: data});
   }
 }

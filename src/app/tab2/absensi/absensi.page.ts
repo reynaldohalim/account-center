@@ -4,7 +4,7 @@ import axios from 'axios';
 
 declare var google: { visualization: {
   PieChart: any;
-  arrayToDataTable(arg0: ((string | number)[] | (string | { role: string; })[])[]): unknown; DataTable: new () => any; BarChart: new (arg0: HTMLElement | null) => any; 
+  arrayToDataTable(arg0: ((string | number)[] | (string | { role: string; })[])[]): unknown; DataTable: new () => any; BarChart: new (arg0: HTMLElement | null) => any;
 }; };
 
 @Component({
@@ -115,7 +115,7 @@ export class AbsensiPage implements OnInit{
       nip: `${this.absensi.nip}`
     };
 
-    this.router.navigate(['tabs/tab2/izin'], {queryParams: data});
+    this.router.navigate(['izin'], {queryParams: data});
   }
 
   navigateToDetailAbsen(param: string){
@@ -123,8 +123,8 @@ export class AbsensiPage implements OnInit{
       nip: `${this.absensi.nip}`,
       detail: `${param}`
     };
-    
-    this.router.navigate(['tabs/tab2/absensi/detail-absen'], {queryParams: data});
+
+    this.router.navigate(['absensi/detail-absen'], {queryParams: data});
   }
 
   periode_change() {
