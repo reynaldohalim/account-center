@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { api_address } from '../api-address';
 
 @Component({
   selector: 'app-register',
@@ -30,8 +31,8 @@ export class RegisterPage implements OnInit {
 
   register() {
     if(this.register_akun.password == this.verifikasi_password){
-      axios.post("http://localhost/TA_DB/data.php", this.register_akun)
-      .then(  
+      axios.post(api_address, this.register_akun)
+      .then(
         (response) => {
           console.log(response.data);
 

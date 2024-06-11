@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { api_address } from 'src/app/api-address';
 
 @Component({
   selector: 'app-input-pengalaman-kerja',
@@ -93,7 +94,7 @@ export class InputPengalamanKerjaPage implements OnInit {
       }
     }
 
-    axios.get(`http://localhost/TA_DB/data.php`, config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         this.pengalaman_kerja ={
@@ -141,7 +142,7 @@ export class InputPengalamanKerjaPage implements OnInit {
       }
     }
 
-    axios.post("http://localhost/TA_DB/data.php", config)
+    axios.post(api_address, config)
       .then(
         (response) => {
           console.log(response);
@@ -158,7 +159,7 @@ export class InputPengalamanKerjaPage implements OnInit {
   updateMode(){
     if(this.title == 'Perbarui Pengalaman Kerja') this.title = 'Pengalaman Kerja';
     else this.title = 'Perbarui Pengalaman Kerja';
-    
+
     this.updatable = !this.updatable;
   }
 }

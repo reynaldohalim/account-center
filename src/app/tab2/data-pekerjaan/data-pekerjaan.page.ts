@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { api_address } from 'src/app/api-address';
 
 @Component({
   selector: 'app-data-pekerjaan',
@@ -53,7 +54,7 @@ export class DataPekerjaanPage implements OnInit {
       }
     }
 
-    axios.get(`http://localhost/TA_DB/data.php`, config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         this.data_pekerjaan ={

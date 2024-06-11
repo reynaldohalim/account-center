@@ -9,7 +9,7 @@
     <ion-title>{{ title }}</ion-title>
 
     <ion-buttons slot="end">
-      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+      <img src="../../assets/image/pp.png" alt="profile-photo" id="profile_photo_small">
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -20,23 +20,23 @@
       <p class="form-label">Jenis Izin</p>
       <ion-select class="form-input" id="jenis_izin" label="" name="jenis_izin" [(ngModel)]="izin.jenis_izin">
         <ion-select-option *ngFor="let jenis_izin of jenis_izins" value="{{ jenis_izin.kode_jenis_izin }}">
-          {{ jenis_izin.jenis_izin }} 
+          {{ jenis_izin.jenis_izin }}
         </ion-select-option>
       </ion-select>
 
-      <!-- <p class="form-label">Tanggal Izin</p>
-      <ion-input class="form-input" id="tgl_izin" label="" name="tgl_izin" [(ngModel)]="izin.tgl_izin"></ion-input> -->
+      <p class="form-label">Tanggal Izin</p>
+      <ion-input class="form-input" type="date" id="tgl_izin" label="" name="tgl_izin" [(ngModel)]="izin.tgl_izin"></ion-input>
 
-      <div style="display: flex;">
+      <!-- <div style="display: flex;">
         <p class="form-label" class="flex1">Tanggal Izin</p>
         <p style="flex: 0.1;"> </p>
         <p class="form-label" class="flex1">sampai</p>
       </div>
       <div style="display: flex;">
-        <div class="form-input flex1"><ion-input type="text" id="tgl_izin" [(ngModel)]="izin.tgl_izin" name="tgl_izin"></ion-input></div>
+        <div class="form-input flex1"><ion-input type="date" id="tgl_izin" [(ngModel)]="izin.tgl_izin" name="tgl_izin"></ion-input></div>
         <p style="flex: 0.1;"> </p>
-        <div class="form-input flex1"><ion-input type="text" id="tgl_izin2" [(ngModel)]="izin.tgl_izin" name="tgl_izin"></ion-input></div>
-      </div>
+        <div class="form-input flex1"><ion-input type="date" id="tgl_izin" [(ngModel)]="izin.tgl_izin" name="tgl_izin"></ion-input></div>
+      </div> -->
 
       <!-- Jam in jam out -->
       <div style="display: flex;">
@@ -45,13 +45,17 @@
         <p class="form-label" class="flex1">Jam out</p>
       </div>
       <div style="display: flex;">
-        <div class="form-input flex1"><ion-input type="text" id="jam_in" [(ngModel)]="izin.jam_in" name="jam_in"></ion-input></div>
+        <div class="form-input flex1"><ion-input type="time" id="jam_in" [(ngModel)]="izin.jam_in" name="jam_in"></ion-input></div>
         <p style="flex: 0.1;"> </p>
-        <div class="form-input flex1"><ion-input type="text" id="jam_out" [(ngModel)]="izin.jam_out" name="jam_out"></ion-input></div>
+        <div class="form-input flex1"><ion-input type="time" id="jam_out" [(ngModel)]="izin.jam_out" name="jam_out"></ion-input></div>
       </div>
 
       <p class="form-label">Keterangan</p>
       <div class="form-input"><ion-input type="text" id="keterangan" [(ngModel)]="izin.keterangan" name="keterangan"></ion-input></div>
+
+      <p class="form-label">Lampiran</p>
+      <div class="form-input"><input type="file" (change)="onFileSelected($event)"></div>
+
     </ion-list>
 
     <ion-fab horizontal="center">

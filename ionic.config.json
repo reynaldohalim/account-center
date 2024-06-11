@@ -4,5 +4,11 @@
     "capacitor": {}
   },
   "type": "angular",
-  "id": "0fe9ae25"
+  "id": "0fe9ae25",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://192.168.1.6:8100"
+    }
+  ]
 }

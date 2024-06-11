@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import axios from 'axios';
+import { api_address } from 'src/app/api-address';
 
 @Component({
   selector: 'app-detail-absen',
@@ -32,7 +33,7 @@ export class DetailAbsenPage implements OnInit {
         this.detail_absen.no_ijin = params['detail'];
       }
       else{
-        // this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
       }
     });
   }
@@ -50,7 +51,7 @@ export class DetailAbsenPage implements OnInit {
       }
     }
 
-    axios.get("http://localhost/TA_DB/data.php", config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         const jenis_detail = response.data.jenis_detail;
@@ -80,7 +81,7 @@ export class DetailAbsenPage implements OnInit {
             this.icon_name = 'disc';
             this.icon_color = 'tugas_color_true';
           }
-          
+
           this.detail_absen ={
             nip: response.data.nip,
             no_ijin: response.data.izin[0].no_ijin,

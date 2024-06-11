@@ -1,6 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { api_address } from 'src/app/api-address';
 
 @Component({
   selector: 'app-data-pribadi',
@@ -51,7 +52,7 @@ export class DataPribadiPage implements OnInit {
       }
     }
 
-    axios.get(`http://localhost/TA_DB/data.php`, config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         this.data_pribadi ={
@@ -159,7 +160,7 @@ export class DataPribadiPage implements OnInit {
       config.data_baru = this.data_pribadi.tgl_lahir;
       this.send_update(config);
     }
-    
+
     //agama
     if(this.old_data.agama != this.data_pribadi.agama){
       config.label = 'agama';
@@ -183,7 +184,7 @@ export class DataPribadiPage implements OnInit {
       config.data_baru = this.data_pribadi.jumlah_anak + '';
       this.send_update(config);
     }
-    
+
     //pendidikan terakhir
     if(this.old_data.pendidikan_terakhir != this.data_pribadi.pendidikan_terakhir){
       config.label = 'pendidikan_terakhir';
@@ -194,7 +195,7 @@ export class DataPribadiPage implements OnInit {
   }
 
   send_update(config : any){
-    axios.post(`http://localhost/TA_DB/data.php`, config)
+    axios.post(api_address, config)
     .then(
       (response) => {
         console.log(response);
@@ -205,5 +206,5 @@ export class DataPribadiPage implements OnInit {
     })
   }
 
-  
+
 }

@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import { LogarithmicScale } from 'chart.js';
+import { api_address } from 'src/app/api-address';
 
 @Component({
   selector: 'app-input-izin',
@@ -29,7 +30,7 @@ export class InputIzinPage implements OnInit {
     title = 'Input Izin';
     btn_kirim = 'Kirim';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params && params['nip']) {
         this.izin.nip = params['nip'];
@@ -37,7 +38,7 @@ export class InputIzinPage implements OnInit {
       else{
         this.router.navigate(['/login']);
       }
-      
+
       this.getJenisIzin();
 
       if (params && params['no_ijin']) {
@@ -49,6 +50,31 @@ export class InputIzinPage implements OnInit {
     });
   }
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      console.log('Original File selected:', file);
+
+      // Rename the file
+      const newFileName = 'new-filename' + file.name.slice(file.name.lastIndexOf('.'));
+      const newFile = new File([file], newFileName, { type: file.type });
+
+      console.log('Renamed File:', newFile);
+
+      const formData = new FormData();
+      formData.append('file', newFile);
+
+      this.http.post('http://localhost:3000/upload', formData, { responseType: 'text' }).subscribe(
+        response => {
+          console.log('Upload success:', response);
+        },
+        error => {
+          console.error('Upload error:', error);
+        }
+      );
+    }
+  }
+
   ngOnInit() {
   }
 
@@ -58,7 +84,7 @@ export class InputIzinPage implements OnInit {
     if(this.izin.no_ijin != ''){
       config = {
         'nip' : this.izin.nip,
-        'tabel' : 'izin',
+        'tabel' : 'ijin',
         'data' : this.izin,
         'update' : true
       }
@@ -66,13 +92,13 @@ export class InputIzinPage implements OnInit {
     else {
       config = {
         'nip' : this.izin.nip,
-        'tabel' : 'izin',
+        'tabel' : 'ijin',
         'data' : this.izin,
         'update' : false
       };
     }
 
-    axios.post("http://localhost/TA_DB/data.php", config)
+    axios.post(api_address, config)
       .then(
         (response) => {
           console.log(response);
@@ -92,7 +118,7 @@ export class InputIzinPage implements OnInit {
       }
     }
 
-    axios.get("http://localhost/TA_DB/data.php", config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         this.jenis_izins = response.data;
@@ -106,13 +132,13 @@ export class InputIzinPage implements OnInit {
   getIzin(){
     let config={
       params:{
-        'data' : 'izin',
+        'data' : 'ijin',
         'nip' : this.izin.nip,
         'no_ijin' : this.izin.no_ijin
       }
     }
 
-    axios.get(`http://localhost/TA_DB/data.php`, config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         this.izin = {

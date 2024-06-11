@@ -8,7 +8,7 @@
     <ion-title>{{ title }}</ion-title>
 
     <ion-buttons slot="end">
-      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+      <img src="../../assets/image/pp.png" alt="profile-photo" id="profile_photo_small">
     </ion-buttons>
 
   </ion-toolbar>
@@ -32,10 +32,10 @@
 
       <p class="form-label">Potong ASTEK</p>
       <ion-checkbox class="cb-input" name="potong_astek" checked="true" readonly disabled="{{ !updatable }}" [(ngModel)]="data_lainlain.potong_astek"></ion-checkbox>
-      
+
       <p class="form-label">Asuransi</p>
       <div class="form-input"><ion-input value="" name="no_asuransi" readonly disabled="{{ !updatable }}" [(ngModel)]="data_lainlain.no_asuransi"></ion-input></div>
-      
+
       <p class="form-label">Kode Wings</p>
       <div class="form-input"><ion-input name="kode_wings" readonly disabled="{{ !updatable }}" [(ngModel)]="data_lainlain.kode_wings"></ion-input></div>
 
@@ -47,10 +47,10 @@
 
       <p class="form-label">No. Kendaraan</p>
       <div class="form-input"><ion-input name="no_kendaraan" readonly="{{ updatable }}" [(ngModel)]="data_lainlain.no_kendaraan"></ion-input></div>
-      
+
       <p class="form-label">Jari Bermasalah</p>
       <ion-checkbox class="cb-input" name="jari_bermasalah" checked="true" readonly disabled="{{ !updatable }}" [(ngModel)]="data_lainlain.jari_bermasalah"></ion-checkbox>
-      
+
       <p class="form-label">Jumlah SP</p>
       <div class="form-input"><ion-input name="jumlah_sp" readonly disabled="{{ !updatable }}" type="number" [(ngModel)]="data_lainlain.jumlah_sp"></ion-input></div>
 

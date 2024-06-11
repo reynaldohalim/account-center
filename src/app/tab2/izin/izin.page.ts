@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { api_address } from 'src/app/api-address';
 
 
 @Component({
@@ -31,12 +32,12 @@ export class IzinPage implements OnInit {
   getData(){
     const config={
       params:{
-        'data' : 'izin',
+        'data' : 'ijin',
         'nip' : this.nip,
       }
     }
 
-    axios.get("http://localhost/TA_DB/data.php", config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         this.arr_izin = response.data;

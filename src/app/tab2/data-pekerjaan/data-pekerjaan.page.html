@@ -8,7 +8,8 @@
     <ion-title>Data Pekerjaan</ion-title>
 
     <ion-buttons slot="end">
-      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+      <!-- <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small"> -->
+      <img src="../../assets/image/pp.png" alt="profile-photo" id="profile_photo_small">
     </ion-buttons>
 
   </ion-toolbar>
@@ -28,13 +29,13 @@
 
       <p class="form-label">Jabatan</p>
       <div class="form-input"><ion-input type="text" name="jabatan" readonly [(ngModel)]="data_pekerjaan.jabatan"></ion-input></div>
-            
+
       <p class="form-label">Group</p>
       <div class="form-input"><ion-input type="text" name="group" readonly [(ngModel)]="data_pekerjaan.group"></ion-input></div>
-      
+
       <p class="form-label">Kode Admin</p>
       <div class="form-input"><ion-input type="tel" value="" name="kode_admin" readonly [(ngModel)]="data_pekerjaan.kode_admin"></ion-input></div>
-      
+
       <p class="form-label">Kode Kontrak</p>
       <div class="form-input"><ion-input name="kode_kontrak" readonly [(ngModel)]="data_pekerjaan.kode_kontrak"></ion-input></div>
 
@@ -43,10 +44,10 @@
 
       <p class="form-label">Sales Office / District</p>
       <div class="form-input"><ion-input name="sales_office" readonly [(ngModel)]="data_pekerjaan.sales_office"></ion-input></div>
-      
+
       <p class="form-label">Tanggal Masuk</p>
       <div class="form-input"><ion-input type="date" name="tgl_masuk" readonly [(ngModel)]="data_pekerjaan.tgl_masuk"></ion-input></div>
-      
+
       <p class="form-label">Tanggal Penetapan</p>
       <div class="form-input"><ion-input type="date" name="tgl_penetapan" readonly [(ngModel)]="data_pekerjaan.tgl_penetapan"></ion-input></div>
 
@@ -58,7 +59,7 @@
 
       <p class="form-label" *ngIf="!karyawan_aktif">Tanggal Keluar</p>
       <div class="form-input"><ion-input type="date" name="tanggal_keluar" readonly *ngIf="!karyawan_aktif" [(ngModel)]="data_pekerjaan.tgl_keluar"></ion-input></div>
-      
+
       <p class="form-label" *ngIf="!karyawan_aktif">Alasan Keluar</p>
       <div class="form-input"><ion-input name="alasan_keluar" readonly *ngIf="!karyawan_aktif" [(ngModel)]="data_pekerjaan.alasan_keluar"></ion-input></div>
 

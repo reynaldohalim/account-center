@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { api_address } from 'src/app/api-address';
 
 @Component({
   selector: 'app-input-organisasi',
@@ -83,7 +84,7 @@ export class InputOrganisasiPage implements OnInit {
       }
     }
 
-    axios.get(`http://localhost/TA_DB/data.php`, config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         this.organisasi ={
@@ -121,7 +122,7 @@ export class InputOrganisasiPage implements OnInit {
       }
     }
 
-    axios.post("http://localhost/TA_DB/data.php", config)
+    axios.post(api_address, config)
       .then(
         (response) => {
           console.log(response);
@@ -138,7 +139,7 @@ export class InputOrganisasiPage implements OnInit {
   updateMode(){
     if(this.title == 'Perbarui Data Organisasi') this.title = 'Data Organisasi';
     else this.title = 'Perbarui Data Organisasi';
-    
+
     this.updatable = !this.updatable;
   }
 }

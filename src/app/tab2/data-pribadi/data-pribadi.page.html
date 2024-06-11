@@ -10,7 +10,7 @@
 
 <ion-content>
   <div id="profile_photo_div">
-    <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile_photo">
+    <img src="../../assets/image/pp.png" alt="profile-photo" id="profile_photo">
   </div>
 
   <form>
@@ -29,16 +29,16 @@
 
       <p class="form-label">Alamat KTP</p>
       <div class="form-input"><ion-textarea rows="3" type="text" name="alamat_ktp" readonly="{{ updatable }}" [(ngModel)]="data_pribadi.alamat_ktp"></ion-textarea></div>
-            
+
       <p class="form-label">Alamat Domisili</p>
       <div class="form-input"><ion-textarea rows="3" type="text" name="alamat_domisili" readonly="{{ updatable }}" [(ngModel)]="data_pribadi.alamat_domisili"></ion-textarea></div>
-      
+
       <p class="form-label">No. Handphone</p>
       <div class="form-input"><ion-input type="tel" value="" name="no_hp" readonly="{{ updatable }}" [(ngModel)]="data_pribadi.no_hp"></ion-input></div>
-      
+
       <p class="form-label">Tempat Lahir</p>
       <div class="form-input"><ion-input name="tempat_lahir" readonly="{{ updatable }}" [(ngModel)]="data_pribadi.tempat_lahir"></ion-input></div>
-      
+
       <p class="form-label">Tanggal Lahir</p>
       <div class="form-input"><ion-input type="date" name="tanggal_lahir" readonly="{{ updatable }}" [(ngModel)]="data_pribadi.tgl_lahir"></ion-input></div>
 
@@ -51,16 +51,16 @@
         <ion-select-option value="Budha">Budha</ion-select-option>
         <ion-select-option value="Konghucu">Konghucu</ion-select-option>
       </ion-select>
-      
+
       <p class="form-label">Status Nikah</p>
       <ion-select class="form-input dropdown-{{ updatable }}" name="status_nikah" label="" [(ngModel)]="data_pribadi.status_nikah">
         <ion-select-option value="0">Belum Nikah</ion-select-option>
         <ion-select-option value="1">Menikah</ion-select-option>
       </ion-select>
-      
+
       <p class="form-label" *ngIf="jumlah_anak">Jumlah Anak</p>
       <div class="form-input"><ion-input type="number" name="jumlah_anak" min="0" *ngIf="jumlah_anak" readonly="{{ updatable }}" [(ngModel)]="data_pribadi.jumlah_anak"></ion-input></div>
-      
+
       <p class="form-label">Pendidikan Terakhir</p>
       <ion-select class="form-input dropdown-{{ updatable }}" name="pendidikan_terakhir" label="" [(ngModel)]="data_pribadi.pendidikan_terakhir">
         <ion-select-option value="SMA">SMA</ion-select-option>

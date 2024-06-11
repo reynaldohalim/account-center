@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { api_address } from '../api-address';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,6 @@ export class LoginPage implements OnInit {
   errorMessage = '';
 
   constructor(private router: Router) {}
-
   ngOnInit() {
   }
 
@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    axios.post("http://localhost/TA_DB/data.php", this.akun)
+    axios.post(api_address, this.akun)
       .then(
         (response) => {
           console.log(response);

@@ -8,7 +8,7 @@
     <ion-title>Absensi</ion-title>
 
     <ion-buttons slot="end">
-      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+      <img src="../../assets/image/pp.png" alt="profile-photo" id="profile_photo_small">
     </ion-buttons>
 
   </ion-toolbar>
@@ -43,7 +43,7 @@
     <ion-progress-bar [value]="1" [style.width.%]="absensi.tugas" class="inline tugas_color_{{ tugas_isActive }}" (click)="showTugas()"></ion-progress-bar>
     <ion-progress-bar [value]="1" [style.width.%]="absensi.error" class="inline error_color_{{ error_isActive }}" (click)="showError()"></ion-progress-bar>
   </ion-item>
-  
+
   <ion-list>
 
     <!-- Absen Full Section -->
@@ -53,7 +53,7 @@
         <ion-list>
           <p class="inline bold" id="">{{ this.absensi.full }}%</p>
           <ion-label class="inline"> Absen Full</ion-label>
-          <ion-progress-bar [value]="100" class="full_color_{{ full_isActive }}"></ion-progress-bar>  
+          <ion-progress-bar [value]="100" class="full_color_{{ full_isActive }}"></ion-progress-bar>
         </ion-list>
       </ion-item>
 
@@ -67,7 +67,7 @@
         </ion-list>
       </ion-item>
     </ion-list>
-    
+
 
     <!-- Cuti Section -->
     <ion-list class="item-card" *ngIf="cuti_isActive" (click)="showCuti()">
@@ -76,7 +76,7 @@
         <ion-list>
           <p class="inline bold" id="">{{ this.absensi.cuti }}%</p>
           <ion-label class="inline"> Cuti</ion-label>
-          <ion-progress-bar [value]="100" class="cuti_color_{{ cuti_isActive }}"></ion-progress-bar>  
+          <ion-progress-bar [value]="100" class="cuti_color_{{ cuti_isActive }}"></ion-progress-bar>
         </ion-list>
       </ion-item>
 
@@ -87,8 +87,8 @@
           <p class="inline bold">{{ this.arr_cuti.length }}</p>
           <ion-label class="inline"> Cuti terpakai</ion-label>
           <br><br>
-          <ul>
-            <li><a *ngFor="let item of arr_cuti" (click)="navigateToDetailAbsen(item)"> {{ item }} </a></li>
+          <ul *ngFor="let item of arr_cuti">
+            <li><a (click)="navigateToDetailAbsen(item)"> {{ item }} </a></li>
           </ul>
         </ion-list>
       </ion-item>
@@ -101,7 +101,7 @@
         <ion-list>
           <p class="inline bold" id="">{{ this.absensi.tugas }}%</p>
           <ion-label class="inline"> Tugas</ion-label>
-          <ion-progress-bar [value]="100" class="tugas_color_{{ tugas_isActive }}"></ion-progress-bar>  
+          <ion-progress-bar [value]="100" class="tugas_color_{{ tugas_isActive }}"></ion-progress-bar>
         </ion-list>
       </ion-item>
 
@@ -112,8 +112,8 @@
           <p class="inline bold">{{ this.arr_tugas.length }}</p>
           <ion-label class="inline"> Jumlah tugas</ion-label>
           <br><br>
-          <ul>
-            <li><a *ngFor="let item of arr_tugas" (click)="navigateToDetailAbsen(item)">{{ item }}</a></li>
+          <ul *ngFor="let item of arr_tugas">
+            <li><a (click)="navigateToDetailAbsen(item)">{{ item }}</a></li>
           </ul>
         </ion-list>
       </ion-item>
@@ -126,7 +126,7 @@
         <ion-list>
           <p class="inline bold" id="">{{ this.absensi.error }}%</p>
           <ion-label class="inline"> Absen Error</ion-label>
-          <ion-progress-bar [value]="100" class="error_color_{{ error_isActive }}"></ion-progress-bar>  
+          <ion-progress-bar [value]="100" class="error_color_{{ error_isActive }}"></ion-progress-bar>
         </ion-list>
       </ion-item>
 
@@ -137,8 +137,8 @@
           <p class="inline bold">{{ this.arr_error.length }}</p>
           <ion-label class="inline"> Hari absen bermasalah</ion-label>
           <br><br>
-          <ul>
-            <li><a *ngFor="let item of arr_error" (click)="navigateToDetailAbsen(item)">{{ formatDate(item) }}</a></li>
+          <ul *ngFor="let item of arr_error">
+            <li><a (click)="navigateToDetailAbsen(item)">{{ formatDate(item) }}</a></li>
           </ul>
         </ion-list>
       </ion-item>

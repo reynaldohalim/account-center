@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { api_address } from 'src/app/api-address';
 
 declare var google: { visualization: {
   PieChart: any;
@@ -80,7 +81,7 @@ export class AbsensiPage implements OnInit{
       }
     }
 
-    axios.get(`http://localhost/TA_DB/data.php`, config)
+    axios.get(api_address, config)
     .then(
       (response) => {
         // console.log(response.data.error);

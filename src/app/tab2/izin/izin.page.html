@@ -8,7 +8,7 @@
     <ion-title>Izin</ion-title>
 
     <ion-buttons slot="end">
-      <img src="../../assets/icon/account_circle.png" alt="profile-photo" id="profile-photo-small">
+      <img src="../../assets/image/pp.png" alt="profile-photo" id="profile_photo_small">
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -17,13 +17,13 @@
   <div id="data-izin">
     <ion-list>
       <ion-item *ngFor="let data of arr_izin" (click)="navigateToEdit(data.no_ijin)">
-        {{ data.no_ijin }}
+        {{ data.tgl_ijin }}
         <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
       </ion-item>
     </ion-list>
   </div>
 
-  <p class="centered-content" *ngIf="no_data">No Data</p>
+  <p class="centered-content" *ngIf="no_data">Tidak Ada Data</p>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="center">
     <ion-fab-button (click)="navigateToEdit('')">
