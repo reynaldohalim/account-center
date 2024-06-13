@@ -1,1 +1,1 @@
-export const api_address = "http://192.168.1.6/TA_DB/data.php";
+export const api_address = "https://192.168.1.5/TA_DB/data.php";
