@@ -19,12 +19,12 @@ import { Capacitor } from '@capacitor/core';
 export class LoginPage implements OnInit {
   akun = {
     nip:null,
-    password:''
+    password:'',
+    token:''
   };
 
   success = true;
   errorMessage = '';
-  // toastMessage=api_address;
 
   constructor(private router: Router) {}
   ngOnInit() {
@@ -45,7 +45,9 @@ export class LoginPage implements OnInit {
     });
 
     PushNotifications.addListener('registration', (token: Token) => {
-      alert('Push registration success, token: ' + token.value);
+      // alert('Push registration success, token: ' + token.value);
+      console.log(token.value);
+      this.akun.token = token.value;
     });
 
     PushNotifications.addListener('registrationError', (error: any) => {
@@ -55,7 +57,7 @@ export class LoginPage implements OnInit {
     PushNotifications.addListener(
       'pushNotificationReceived',
       (notification: PushNotificationSchema) => {
-        alert('Push received: ' + JSON.stringify(notification));
+        alert('Pesan diterima: ' + JSON.stringify(notification));
       },
     );
 
@@ -68,58 +70,58 @@ export class LoginPage implements OnInit {
     }
   }
 
-  addListeners = async()=>{
-    // On success, we should be able to receive notifications
-    await PushNotifications.addListener('registration',
-      (token: Token) => {
-        alert('Push registration success, token: ' + token.value);
-      }
-    );
+  // addListeners = async()=>{
+  //   // On success, we should be able to receive notifications
+  //   await PushNotifications.addListener('registration',
+  //     (token: Token) => {
+  //       alert('Push registration success, token: ' + token.value);
+  //     }
+  //   );
 
-    // Some issue with our setup and push will not work
-    await PushNotifications.addListener('registrationError',
-      (error: any) => {
-        alert('Error on registration: ' + JSON.stringify(error));
-      }
-    );
+  //   // Some issue with our setup and push will not work
+  //   await PushNotifications.addListener('registrationError',
+  //     (error: any) => {
+  //       alert('Error on registration: ' + JSON.stringify(error));
+  //     }
+  //   );
 
-    // Show us the notification payload if the app is open on our device
-    await PushNotifications.addListener('pushNotificationReceived',
-      (notification: PushNotificationSchema) => {
-        alert('Push received: ' + JSON.stringify(notification));
-      }
-    );
+  //   // Show us the notification payload if the app is open on our device
+  //   await PushNotifications.addListener('pushNotificationReceived',
+  //     (notification: PushNotificationSchema) => {
+  //       alert('Push received: ' + JSON.stringify(notification));
+  //     }
+  //   );
 
-    // Method called when tapping on a notification
-    await PushNotifications.addListener('pushNotificationActionPerformed',
-      (notification: ActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
-      }
-    );
-  }
+  //   // Method called when tapping on a notification
+  //   await PushNotifications.addListener('pushNotificationActionPerformed',
+  //     (notification: ActionPerformed) => {
+  //       alert('Push action performed: ' + JSON.stringify(notification));
+  //     }
+  //   );
+  // }
 
-  async registerPN(){
-    let permStatus = await PushNotifications.checkPermissions();
-    alert(JSON.stringify(permStatus));
+  // async registerPN(){
+  //   let permStatus = await PushNotifications.checkPermissions();
+  //   alert(JSON.stringify(permStatus));
 
-    if(permStatus.receive === 'prompt')
-      permStatus = await PushNotifications.requestPermissions();
+  //   if(permStatus.receive === 'prompt')
+  //     permStatus = await PushNotifications.requestPermissions();
 
-    if (permStatus.receive !== 'granted')
-        alert('user denied permissions!')
+  //   if (permStatus.receive !== 'granted')
+  //       alert('user denied permissions!')
 
-    if (permStatus.receive === 'granted'){
-      try{
-        await PushNotifications.register();
-      }
-      catch(e){alert(JSON.stringify(e));
-      }
-    }
-  }
-  async getDeliveredN (){
-    const notificationsList = await PushNotifications.getDeliveredNotifications
-    alert('delivered notifications ' + JSON.stringify(notificationsList));
-  }
+  //   if (permStatus.receive === 'granted'){
+  //     try{
+  //       await PushNotifications.register();
+  //     }
+  //     catch(e){alert(JSON.stringify(e));
+  //     }
+  //   }
+  // }
+  // async getDeliveredN (){
+  //   const notificationsList = await PushNotifications.getDeliveredNotifications
+  //   alert('delivered notifications ' + JSON.stringify(notificationsList));
+  // }
 
   setSuccess(isSuccess: boolean) {
     this.success = isSuccess;
@@ -133,7 +135,6 @@ export class LoginPage implements OnInit {
 
           this.errorMessage = response.data['message'];
           this.setSuccess(response.data['success']);
-          // this.toastMessage = response.data['message'];
 
           //navigate to home
           if(this.success){
@@ -148,7 +149,7 @@ export class LoginPage implements OnInit {
         }
       )
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data);
       })
       this.setSuccess(true);
   }
