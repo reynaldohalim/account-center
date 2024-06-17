@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { Observable } from 'rxjs';
 import { api_address } from 'src/app/api-address';
 
 @Component({
@@ -30,6 +31,8 @@ export class InputIzinPage implements OnInit {
     title = 'Input Izin';
     btn_kirim = 'Kirim';
 
+
+
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params && params['nip']) {
@@ -49,6 +52,56 @@ export class InputIzinPage implements OnInit {
       }
     });
   }
+
+  private sendNotificationUrl = 'https://account-center.my.id/TA_DB/send_notification.php'; // Replace with your server URL
+
+  sendNotification(title: string, message: string, deviceToken: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    const body = {
+      title: title,
+      message: message,
+      deviceToken: deviceToken
+    };
+
+    return this.http.post(this.sendNotificationUrl, body, { headers: headers });
+  }
+
+  sendNotif() {
+    const title = 'Test Notification';
+    const message = 'This is a test notification from Ionic';
+    const deviceToken = 'e-hDMOuSTa-IUjtgkU1b_j:APA91bGTGZiQ6gU68f5UaVpj6-mg9g4eMK0DXhvquTdjC_DX4xumjNCpsmA2UDokBEtL_e8UY8dZO2qc4p4O-KbXyTpzEea0cg9B4jj7Utr52K6rQdQkd8g6d27TBiNBMO93W1ac7XJe'; // Replace with the actual device token
+
+    this.sendNotification(title, message, deviceToken).subscribe(
+      response => {
+        console.log('Notification sent successfully', response);
+      },
+      error => {
+        console.error('Error sending notification', error);
+      }
+    );
+  }
+
+  // sendNotif() {
+  //   const notification = {
+  //     title: 'cobaa title',
+  //     message: 'coba message',
+  //     token: 'e-hDMOuSTa-IUjtgkU1b_j:APA91bGTGZiQ6gU68f5UaVpj6-mg9g4eMK0DXhvquTdjC_DX4xumjNCpsmA2UDokBEtL_e8UY8dZO2qc4p4O-KbXyTpzEea0cg9B4jj7Utr52K6rQdQkd8g6d27TBiNBMO93W1ac7XJe'
+  //   };
+
+  //   // Check if CSRF token is available before making the request
+
+  //   axios.post('http://localhost:8000/send-notification', notification, {})
+  //   .then(response => {
+  //     console.log('Push notification sent successfully:', response.data);
+  //   })
+  //   .catch(error => {
+  //     console.error('Error sending push notification:', error);
+  //   });
+  // }
+
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -78,6 +131,42 @@ export class InputIzinPage implements OnInit {
   ngOnInit() {
   }
 
+  // sendNotif(no_ijin: string){
+  //   const config={
+  //     params:{
+  //       'data' : 'token',
+  //       'nip' : this.izin.nip,
+  //     }
+  //   }
+
+  //   axios.get(api_address, config)
+  //     .then((response) => {
+  //       console.log(response.data['token']);
+
+  //       const body = {
+  //         title : 'Pengajuan Izin - '+ response.data['nama'] + ' - ' + response.data['divisi'],
+  //         message : 'No. Ijin: ' + no_ijin + '\n NIP: ' + this.izin.nip + '\n Tanggal',
+  //         token: response.data['token']
+  //       };
+  //       console.log(body);
+  //       // this.http.post('https://account-center.my.id/send-notification', body).subscribe(
+  //         this.http.post('http://localhost:8000/send-notification', body).subscribe(
+  //         response => {
+  //           console.log('Notification sent successfully', response);
+  //         },
+  //         error => {
+  //           console.error('Error sending notification', error);
+  //         }
+  //       );
+
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+
+
+  // }
+
   send() {
     let config;
 
@@ -98,7 +187,8 @@ export class InputIzinPage implements OnInit {
       };
     }
 
-    axios.post(api_address, config)
+    if(this.izin.tgl_izin != '' && this.izin.jenis_izin != ''){
+      axios.post(api_address, config)
       .then(
         (response) => {
           console.log(response);
@@ -107,6 +197,7 @@ export class InputIzinPage implements OnInit {
       .catch((error) => {
         console.log(error);
       })
+    }
   }
 
 
