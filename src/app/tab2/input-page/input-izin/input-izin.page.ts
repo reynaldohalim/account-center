@@ -53,56 +53,6 @@ export class InputIzinPage implements OnInit {
     });
   }
 
-  private sendNotificationUrl = 'https://account-center.my.id/TA_DB/send_notification.php'; // Replace with your server URL
-
-  sendNotification(title: string, message: string, deviceToken: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-
-    const body = {
-      title: title,
-      message: message,
-      deviceToken: deviceToken
-    };
-
-    return this.http.post(this.sendNotificationUrl, body, { headers: headers });
-  }
-
-  sendNotif() {
-    const title = 'Test Notification';
-    const message = 'This is a test notification from Ionic';
-    const deviceToken = 'e-hDMOuSTa-IUjtgkU1b_j:APA91bGTGZiQ6gU68f5UaVpj6-mg9g4eMK0DXhvquTdjC_DX4xumjNCpsmA2UDokBEtL_e8UY8dZO2qc4p4O-KbXyTpzEea0cg9B4jj7Utr52K6rQdQkd8g6d27TBiNBMO93W1ac7XJe'; // Replace with the actual device token
-
-    this.sendNotification(title, message, deviceToken).subscribe(
-      response => {
-        console.log('Notification sent successfully', response);
-      },
-      error => {
-        console.error('Error sending notification', error);
-      }
-    );
-  }
-
-  // sendNotif() {
-  //   const notification = {
-  //     title: 'cobaa title',
-  //     message: 'coba message',
-  //     token: 'e-hDMOuSTa-IUjtgkU1b_j:APA91bGTGZiQ6gU68f5UaVpj6-mg9g4eMK0DXhvquTdjC_DX4xumjNCpsmA2UDokBEtL_e8UY8dZO2qc4p4O-KbXyTpzEea0cg9B4jj7Utr52K6rQdQkd8g6d27TBiNBMO93W1ac7XJe'
-  //   };
-
-  //   // Check if CSRF token is available before making the request
-
-  //   axios.post('http://localhost:8000/send-notification', notification, {})
-  //   .then(response => {
-  //     console.log('Push notification sent successfully:', response.data);
-  //   })
-  //   .catch(error => {
-  //     console.error('Error sending push notification:', error);
-  //   });
-  // }
-
-
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
@@ -130,42 +80,6 @@ export class InputIzinPage implements OnInit {
 
   ngOnInit() {
   }
-
-  // sendNotif(no_ijin: string){
-  //   const config={
-  //     params:{
-  //       'data' : 'token',
-  //       'nip' : this.izin.nip,
-  //     }
-  //   }
-
-  //   axios.get(api_address, config)
-  //     .then((response) => {
-  //       console.log(response.data['token']);
-
-  //       const body = {
-  //         title : 'Pengajuan Izin - '+ response.data['nama'] + ' - ' + response.data['divisi'],
-  //         message : 'No. Ijin: ' + no_ijin + '\n NIP: ' + this.izin.nip + '\n Tanggal',
-  //         token: response.data['token']
-  //       };
-  //       console.log(body);
-  //       // this.http.post('https://account-center.my.id/send-notification', body).subscribe(
-  //         this.http.post('http://localhost:8000/send-notification', body).subscribe(
-  //         response => {
-  //           console.log('Notification sent successfully', response);
-  //         },
-  //         error => {
-  //           console.error('Error sending notification', error);
-  //         }
-  //       );
-
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-
-
-  // }
 
   send() {
     let config;
@@ -247,4 +161,110 @@ export class InputIzinPage implements OnInit {
       console.log(error);
     })
   }
+
+  sendNotifikasi(no_ijin: string){
+    const config={
+      params:{
+        'data' : 'token',
+        'nip' : this.izin.nip,
+      }
+    }
+
+    axios.get(api_address, config)
+      .then((response) => {
+        console.log(response.data['token']);
+
+        const body = {
+          title : 'Pengajuan Izin - '+ response.data['nama'] + ' - ' + response.data['divisi'],
+          message : 'No. Ijin: ' + no_ijin + '\n NIP: ' + this.izin.nip + '\n Tanggal',
+          token: response.data['token']
+        };
+        console.log(body);
+
+        axios.get('http://localhost:8000/send-notification', config)
+        .then(
+          (response) => {
+            console.log(response)
+          }
+        )
+        .catch((error) => {
+          console.log(error);
+        });
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+
+  sendNotif() {
+    let config={
+      params:{
+        title: 'coba haloooo2',
+        message: 'coba message',
+        deviceToken: 'e-hDMOuSTa-IUjtgkU1b_j:APA91bGTGZiQ6gU68f5UaVpj6-mg9g4eMK0DXhvquTdjC_DX4xumjNCpsmA2UDokBEtL_e8UY8dZO2qc4p4O-KbXyTpzEea0cg9B4jj7Utr52K6rQdQkd8g6d27TBiNBMO93W1ac7XJe' // Replace with actual device token
+      }
+    }
+
+    axios.get('http://localhost:8000/send-notification', config)
+    .then(
+      (response) => {
+        console.log(response)
+      }
+    )
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  // private sendNotificationUrl = 'https://account-center.my.id/TA_DB/send_notification.php'; // Replace with your server URL
+
+  // sendNotification(title: string, message: string, deviceToken: string): Observable<any> {
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   });
+
+  //   const body = {
+  //     title: title,
+  //     message: message,
+  //     deviceToken: deviceToken
+  //   };
+
+  //   return this.http.post(this.sendNotificationUrl, body, { headers: headers });
+  // }
+
+  // sendNotif() {
+  //   const title = 'Test Notification';
+  //   const message = 'This is a test notification from Ionic';
+  //   const deviceToken = 'e-hDMOuSTa-IUjtgkU1b_j:APA91bGTGZiQ6gU68f5UaVpj6-mg9g4eMK0DXhvquTdjC_DX4xumjNCpsmA2UDokBEtL_e8UY8dZO2qc4p4O-KbXyTpzEea0cg9B4jj7Utr52K6rQdQkd8g6d27TBiNBMO93W1ac7XJe'; // Replace with the actual device token
+
+  //   this.sendNotification(title, message, deviceToken).subscribe(
+  //     response => {
+  //       console.log('Notification sent successfully', response);
+  //     },
+  //     error => {
+  //       console.error('Error sending notification', error);
+  //     }
+  //   );
+  // }
+
+  // sendNotif() {
+  //   const notification = {
+  //     title: 'cobaa title',
+  //     message: 'coba message',
+  //     token: 'e-hDMOuSTa-IUjtgkU1b_j:APA91bGTGZiQ6gU68f5UaVpj6-mg9g4eMK0DXhvquTdjC_DX4xumjNCpsmA2UDokBEtL_e8UY8dZO2qc4p4O-KbXyTpzEea0cg9B4jj7Utr52K6rQdQkd8g6d27TBiNBMO93W1ac7XJe'
+  //   };
+
+  //   // Check if CSRF token is available before making the request
+
+  //   axios.post('http://localhost:8000/send-notification', notification, {})
+  //   .then(response => {
+  //     console.log('Push notification sent successfully:', response.data);
+  //   })
+  //   .catch(error => {
+  //     console.error('Error sending push notification:', error);
+  //   });
+  // }
+
+
 }
