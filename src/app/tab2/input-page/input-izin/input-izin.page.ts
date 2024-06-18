@@ -105,7 +105,8 @@ export class InputIzinPage implements OnInit {
       axios.post(api_address, config)
       .then(
         (response) => {
-          console.log(response);
+          console.log(response.data);
+          this.sendNotifikasi(response.data);
         }
       )
       .catch((error) => {
@@ -175,13 +176,20 @@ export class InputIzinPage implements OnInit {
         console.log(response.data['token']);
 
         const body = {
-          title : 'Pengajuan Izin - '+ response.data['nama'] + ' - ' + response.data['divisi'],
-          message : 'No. Ijin: ' + no_ijin + '\n NIP: ' + this.izin.nip + '\n Tanggal',
-          token: response.data['token']
+          params:{
+            title : 'Pengajuan Izin - '+ response.data['nama'] + ' - ' + response.data['divisi'],
+            message :
+            'No. Ijin: '+ no_ijin +
+            '\r\nNIP: ' + this.izin.nip +
+            '\r\nTanggal: ' + this.izin.tgl_izin +
+            '\r\nJenis Izin: ' + this.izin.jenis_izin +
+            '\r\nKeterangan:\r\n' + this.izin.keterangan,
+            token: response.data['token']
+          }
         };
-        console.log(body);
+        console.log(body.params);
 
-        axios.get('http://localhost:8000/send-notification', config)
+        axios.get('https://account-center.my.id/send-notification', body)
         .then(
           (response) => {
             console.log(response)

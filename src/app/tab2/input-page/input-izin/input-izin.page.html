@@ -53,14 +53,14 @@
       <p class="form-label">Keterangan</p>
       <div class="form-input"><ion-input type="text" id="keterangan" [(ngModel)]="izin.keterangan" name="keterangan"></ion-input></div>
 
-      <p class="form-label">Lampiran</p>
-      <div class="form-input"><input type="file" (change)="onFileSelected($event)"></div>
+      <!-- <p class="form-label">Lampiran</p>
+      <div class="form-input"><input type="file" (change)="onFileSelected($event)"></div> -->
 
     </ion-list>
 
     <ion-fab horizontal="center">
       <ion-button id="btn_kirim" (click)="send()">{{ btn_kirim }}</ion-button>
-      <ion-button id="btn_kirim" (click)="sendNotif()">Notif</ion-button>
+      <!-- <ion-button id="btn_kirim" (click)="sendNotif()">Notif</ion-button> -->
     </ion-fab><br><br><br>
 
   </form>

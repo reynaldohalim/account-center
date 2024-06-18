@@ -64,7 +64,7 @@ export class LoginPage implements OnInit {
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
       (notification: ActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
+        alert('Notifikasi: ' + JSON.stringify(notification));
       },
     );
     }
