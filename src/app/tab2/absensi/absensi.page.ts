@@ -20,7 +20,7 @@ export class AbsensiPage implements OnInit{
   show_pilih_bulan = false;
   tgl_awal = '';
   tgl_akhir = '';
-  min_tgl = '2023-11';
+  min_tgl = '2023-06';
   min_tgl_akhir = this.min_tgl;
   max_tgl = this.getCurrentYearMonth();
 

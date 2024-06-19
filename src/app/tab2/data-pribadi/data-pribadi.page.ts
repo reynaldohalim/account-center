@@ -105,6 +105,13 @@ export class DataPribadiPage implements OnInit {
     },
   ];
 
+  sentAlert = false;
+  alertButtons = ['Ok!'];
+
+  setSentAlert(isOpen: boolean) {
+    this.sentAlert = isOpen;
+  }
+
   updateMode(){
     if(this.title == 'Data Pribadi') this.title = 'Perbarui Data Pribadi';
     else this.title = 'Data Pribadi';
@@ -119,6 +126,10 @@ export class DataPribadiPage implements OnInit {
       'label': '',
       'data_lama' : '',
       'data_baru': ''
+    }
+
+    if(this.old_data != this.data_pribadi){
+      this.setSentAlert(true);
     }
 
     //alamat KTP

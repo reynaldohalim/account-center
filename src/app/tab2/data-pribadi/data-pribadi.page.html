@@ -83,4 +83,12 @@
     <ion-alert trigger="btn_kirim" *ngIf="!updatable" class="custom-alert" header="Kirim perbaruan data?" [buttons]="send_update_alert"></ion-alert>
   </ion-fab>
 
+  <ion-alert
+  [isOpen]="sentAlert"
+  header="Pembaruan terkirim!"
+  message="Data akan otomatis terganti setelah disetujui."
+  [buttons]="alertButtons"
+  (didDismiss)="setSentAlert(false)"
+  ></ion-alert>
+
 </ion-content>

@@ -17,6 +17,7 @@
 <ion-content [fullscreen]="true">
   <form>
     <ion-list>
+      <p *ngIf="status">Status: {{ status }}</p>
       <p class="form-label">Jenis Izin</p>
       <ion-select class="form-input dropdown-{{ updatable }}" id="jenis_izin" label="" name="jenis_izin" [(ngModel)]="izin.jenis_izin">
         <ion-select-option *ngFor="let jenis_izin of jenis_izins" value="{{ jenis_izin.kode_jenis_izin }}">
@@ -53,17 +54,12 @@
       <p class="form-label">Keterangan</p>
       <div class="form-input"><ion-input type="text" id="keterangan" [(ngModel)]="izin.keterangan" readonly="{{ updatable }}" name="keterangan"></ion-input></div>
 
-      <p>{{ status }}</p>
-
-      <!-- <p class="form-label">Lampiran</p>
-      <div class="form-input"><input type="file" (change)="onFileSelected($event)"></div> -->
+      <p class="form-label"><span *ngIf="!selectedFile && !imageUrl">Tidak Ada </span>Lampiran</p>
+      <div class="form-input" *ngIf="!updatable"><input type="file" (change)="onFileSelected($event)"></div>
+      <img *ngIf="selectedFile" [src]="selectedFileUrl" alt="Selected Image" style="max-width: 100%; max-height: 50vh;">
+      <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image" style="max-width: 100%; max-height: 50vh;">
 
     </ion-list>
-
-    <!-- <ion-fab horizontal="center">
-      <ion-button id="btn_kirim" (click)="send()">{{ btn_kirim }}</ion-button> -->
-      <!-- <ion-button id="btn_kirim" (click)="sendNotif()">Notif</ion-button> -->
-    <!-- </ion-fab><br><br><br> -->
 
     <ion-fab horizontal="center" *ngIf="!hide_button">
       <ion-fab-button *ngIf="updatable" id="updateMode">
@@ -71,13 +67,9 @@
       </ion-fab-button>
       <ion-alert trigger="updateMode" *ngIf="updatable" class="custom-alert" header="Perbarui izin?" [buttons]="update_mode_alert"></ion-alert>
 
-      <ion-button id="btn_kirim" *ngIf="!updatable">{{ btn_kirim }}</ion-button>
+      <ion-button id="btn_kirim" *ngIf="!updatable" (click)="send()">{{ btn_kirim }}</ion-button>
       <ion-alert trigger="btn_kirim" *ngIf="!updatable" class="custom-alert" header="Kirim pengajuan izin?" [buttons]="send_update_alert"></ion-alert>
     </ion-fab>
   </form>
 <br><br><br><br>
-  <form (submit)="uploadFile($event)">
-    <input type="file" (change)="onFileSelected($event)">
-    <ion-button type="submit">Upload</ion-button>
-  </form>
 </ion-content>

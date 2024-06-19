@@ -63,6 +63,13 @@ export class DataLainlainPage implements OnInit {
     },
   ];
 
+  sentAlert = false;
+  alertButtons = ['Ok!'];
+
+  setSentAlert(isOpen: boolean) {
+    this.sentAlert = isOpen;
+  }
+
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -129,6 +136,10 @@ export class DataLainlainPage implements OnInit {
       'label': '',
       'data_lama' : '',
       'data_baru': ''
+    }
+
+    if(this.old_data != this.data_lainlain){
+      this.setSentAlert(true);
     }
 
     // no kpj
