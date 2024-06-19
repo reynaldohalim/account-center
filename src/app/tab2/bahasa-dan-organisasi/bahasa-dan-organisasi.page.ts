@@ -28,6 +28,6 @@ export class BahasaDanOrganisasiPage implements OnInit {
       nip: `${this.nip}`,
     };
 
-    this.router.navigate(['tabs/tab2/'+page], {queryParams: data});
+    this.router.navigate([''+page], {queryParams: data});
   }
 }

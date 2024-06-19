@@ -24,7 +24,7 @@
       <div class="form-input"><ion-input type="text" name="jabatan" readonly="{{ updatable }}" maxlength="25" [(ngModel)]="organisasi.jabatan"></ion-input></div>
 
       <p class="form-label">Tahun</p>
-      <div class="form-input"><ion-input type="text" name="tahun" readonly="{{ updatable }}" maxlength="9" [(ngModel)]="organisasi.tahun"></ion-input></div>
+      <div class="form-input"><ion-input type="number" name="tahun" readonly="{{ updatable }}" min="1900" max="2100" [(ngModel)]="organisasi.tahun"></ion-input></div>
     </ion-list>
 
     <ion-fab horizontal="center">

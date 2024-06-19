@@ -18,14 +18,14 @@
   <form>
     <ion-list>
       <p class="form-label">Jenis Izin</p>
-      <ion-select class="form-input" id="jenis_izin" label="" name="jenis_izin" [(ngModel)]="izin.jenis_izin">
+      <ion-select class="form-input dropdown-{{ updatable }}" id="jenis_izin" label="" name="jenis_izin" [(ngModel)]="izin.jenis_izin">
         <ion-select-option *ngFor="let jenis_izin of jenis_izins" value="{{ jenis_izin.kode_jenis_izin }}">
           {{ jenis_izin.jenis_izin }}
         </ion-select-option>
       </ion-select>
 
       <p class="form-label">Tanggal Izin</p>
-      <ion-input class="form-input" type="date" id="tgl_izin" label="" name="tgl_izin" [(ngModel)]="izin.tgl_izin"></ion-input>
+      <ion-input class="form-input" type="date" id="tgl_izin" readonly="{{ updatable }}" label="" name="tgl_izin" [(ngModel)]="izin.tgl_izin"></ion-input>
 
       <!-- <div style="display: flex;">
         <p class="form-label" class="flex1">Tanggal Izin</p>
@@ -45,23 +45,39 @@
         <p class="form-label" class="flex1">Jam out</p>
       </div>
       <div style="display: flex;">
-        <div class="form-input flex1"><ion-input type="time" id="jam_in" [(ngModel)]="izin.jam_in" name="jam_in"></ion-input></div>
+        <div class="form-input flex1"><ion-input type="time" id="jam_in" [(ngModel)]="izin.jam_in" readonly="{{ updatable }}" name="jam_in"></ion-input></div>
         <p style="flex: 0.1;"> </p>
-        <div class="form-input flex1"><ion-input type="time" id="jam_out" [(ngModel)]="izin.jam_out" name="jam_out"></ion-input></div>
+        <div class="form-input flex1"><ion-input type="time" id="jam_out" [(ngModel)]="izin.jam_out" readonly="{{ updatable }}" name="jam_out"></ion-input></div>
       </div>
 
       <p class="form-label">Keterangan</p>
-      <div class="form-input"><ion-input type="text" id="keterangan" [(ngModel)]="izin.keterangan" name="keterangan"></ion-input></div>
+      <div class="form-input"><ion-input type="text" id="keterangan" [(ngModel)]="izin.keterangan" readonly="{{ updatable }}" name="keterangan"></ion-input></div>
+
+      <p>{{ status }}</p>
 
       <!-- <p class="form-label">Lampiran</p>
       <div class="form-input"><input type="file" (change)="onFileSelected($event)"></div> -->
 
     </ion-list>
 
-    <ion-fab horizontal="center">
-      <ion-button id="btn_kirim" (click)="send()">{{ btn_kirim }}</ion-button>
+    <!-- <ion-fab horizontal="center">
+      <ion-button id="btn_kirim" (click)="send()">{{ btn_kirim }}</ion-button> -->
       <!-- <ion-button id="btn_kirim" (click)="sendNotif()">Notif</ion-button> -->
-    </ion-fab><br><br><br>
+    <!-- </ion-fab><br><br><br> -->
 
+    <ion-fab horizontal="center" *ngIf="!hide_button">
+      <ion-fab-button *ngIf="updatable" id="updateMode">
+        <ion-icon name="create"></ion-icon>
+      </ion-fab-button>
+      <ion-alert trigger="updateMode" *ngIf="updatable" class="custom-alert" header="Perbarui izin?" [buttons]="update_mode_alert"></ion-alert>
+
+      <ion-button id="btn_kirim" *ngIf="!updatable">{{ btn_kirim }}</ion-button>
+      <ion-alert trigger="btn_kirim" *ngIf="!updatable" class="custom-alert" header="Kirim pengajuan izin?" [buttons]="send_update_alert"></ion-alert>
+    </ion-fab>
+  </form>
+<br><br><br><br>
+  <form (submit)="uploadFile($event)">
+    <input type="file" (change)="onFileSelected($event)">
+    <ion-button type="submit">Upload</ion-button>
   </form>
 </ion-content>

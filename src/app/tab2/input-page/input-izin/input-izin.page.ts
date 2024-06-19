@@ -30,8 +30,10 @@ export class InputIzinPage implements OnInit {
     jenis_izins : any = [];
     title = 'Input Izin';
     btn_kirim = 'Kirim';
-
-
+    updatable = false;
+    status = '';
+    hide_button = false;
+    selectedFile: File | null = null;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -53,29 +55,69 @@ export class InputIzinPage implements OnInit {
     });
   }
 
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      console.log('Original File selected:', file);
+  public update_mode_alert = [
+    {
+      text: 'Tidak',
+      cssClass: 'btn-modal-no',
+    },
+    {
+      text: 'Ya',
+      cssClass: 'alert-button-confirm',
+      handler: () => {
+        this.updateMode();
+      },
+    },
+  ];
 
-      // Rename the file
-      const newFileName = 'new-filename' + file.name.slice(file.name.lastIndexOf('.'));
-      const newFile = new File([file], newFileName, { type: file.type });
+  public send_update_alert = [
+    {
+      text: 'Tidak',
+      cssClass: 'btn-modal-no',
+    },
+    {
+      text: 'Ya',
+      cssClass: 'alert-button-confirm',
+      handler: () => {
+        this.send();
+      },
+    },
+  ];
 
-      console.log('Renamed File:', newFile);
+  updateMode(){
+    if(this.title == 'Input Izin') this.title = 'Perbarui Izin';
+    else this.title = 'Input Izin';
 
-      const formData = new FormData();
-      formData.append('file', newFile);
+    this.updatable = !this.updatable;
+  }
 
-      this.http.post('http://localhost:3000/upload', formData, { responseType: 'text' }).subscribe(
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
+  }
+
+  uploadFile(event: Event): void {
+    event.preventDefault();
+    if (!this.selectedFile) {
+      alert('Please select a file first.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.selectedFile, this.selectedFile.name);
+
+    this.http.post('https://account-center.my.id/TA_DB/upload.php', formData)
+      .subscribe(
         response => {
-          console.log('Upload success:', response);
+          console.log(response);
+          alert('File uploaded successfully.');
         },
         error => {
-          console.error('Upload error:', error);
+          console.error(error);
+          alert('File upload failed.');
         }
       );
-    }
   }
 
   ngOnInit() {
@@ -83,7 +125,6 @@ export class InputIzinPage implements OnInit {
 
   send() {
     let config;
-
     if(this.izin.no_ijin != ''){
       config = {
         'nip' : this.izin.nip,
@@ -107,6 +148,7 @@ export class InputIzinPage implements OnInit {
         (response) => {
           console.log(response.data);
           this.sendNotifikasi(response.data);
+          this.updateMode();
         }
       )
       .catch((error) => {
@@ -114,7 +156,6 @@ export class InputIzinPage implements OnInit {
       })
     }
   }
-
 
   getJenisIzin(){
     const config={
@@ -155,6 +196,16 @@ export class InputIzinPage implements OnInit {
           jam_in: response.data[0].jam_in,
           jam_out: response.data[0].jam_out,
           keterangan: response.data[0].keterangan,
+        }
+
+        if(response.data[0].approve1 != '' && response.data[0].approve1 != null){
+          this.status = 'Menunggu Approve 2';
+          this.hide_button = true;
+        }
+        else {
+          this.status = 'Menunggu Approve 1';
+          this.hide_button = false;
+          this.updatable = true;
         }
       }
     )
@@ -205,6 +256,11 @@ export class InputIzinPage implements OnInit {
       });
     }
 
+
+
+
+
+    //test
   sendNotif() {
     let config={
       params:{
@@ -273,6 +329,4 @@ export class InputIzinPage implements OnInit {
   //     console.error('Error sending push notification:', error);
   //   });
   // }
-
-
 }

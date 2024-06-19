@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import axios from 'axios';
+import { Subscription, filter } from 'rxjs';
 import { api_address } from 'src/app/api-address';
 
 @Component({
@@ -15,6 +16,7 @@ export class BahasaPage implements OnInit {
   no_data = true;
   data_terverifikasi = false;
   data_belum_terverifikasi = false;
+  private subscription: Subscription;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -25,11 +27,18 @@ export class BahasaPage implements OnInit {
         this.router.navigate(['/login']);
       }
     });
+
+    this.subscription = this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd && event.url === '/bahasa')
+    ).subscribe(() => {
+      this.getData();
+    });
+
   }
 
   ngOnInit() {
     this.getData();
-    }
+  }
 
   getData(){
     const config={

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import axios from 'axios';
+import { Subscription, filter } from 'rxjs';
 import { api_address } from 'src/app/api-address';
 
 
@@ -14,6 +15,8 @@ export class IzinPage implements OnInit {
   nip= 0;
   no_data= true;
 
+  private subscription: Subscription;
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params && params['nip']) {
@@ -22,6 +25,12 @@ export class IzinPage implements OnInit {
       else{
         this.router.navigate(['/login']);
       }
+    });
+
+    this.subscription = this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd && event.url === '/izin')
+    ).subscribe(() => {
+      this.getData();
     });
   }
 
